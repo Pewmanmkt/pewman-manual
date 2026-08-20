@@ -131,6 +131,12 @@ figure.shot img{width:100%;height:auto;display:block;border:1px solid var(--line
 figure.shot img[src$="08-articulo-editor.jpg"]{aspect-ratio:2000/928}
 figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-align:center}
 @media print{figure.shot{page-break-inside:avoid}}
+/* pantallas muy angostas (bajo 360px): que la tabla se deslice sola en vez de
+   correr la pagina entera de lado. A 375px las tablas ya calzan y no se toca nada. */
+@media (max-width:360px){
+  section.cap table{display:block;overflow-x:auto}
+  .wf-cab{overflow-x:auto}
+}
 /* ---------- buscador flotante ---------- */
 #fab-buscar{background:var(--rojo);color:#fff;box-shadow:0 10px 26px -8px rgba(189,0,40,.55)}
 #velo{position:fixed;inset:0;background:rgba(20,20,20,.55);backdrop-filter:blur(2px);z-index:70;
@@ -289,6 +295,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
     </div>
     <div class="wf-pie">Dibujo esquemático del panel real de Shopify (agosto 2026).</div>
   </div>
+  <figure class="shot"><img width="2000" height="948" src="img/15-panel-inicio.jpg" alt="Panel de administración de Shopify con el buscador y el menú lateral señalados" loading="lazy"><figcaption>Y así se ve de verdad al entrar. <b>①</b> El <b>buscador</b> de arriba (o la tecla <b>⌘ K</b>) encuentra cualquier opción escribiendo su nombre: si alguna vez no hallas algo, parte siempre por ahí. <b>②</b> <b>Contenido</b> está cerrado; al hacerle clic se abre y aparecen Archivos, Menús y Artículos del blog. <b>③</b> Lo mismo con <b>Tienda online</b>: al hacerle clic aparece Páginas debajo, y desde ahí se llega al editor visual del sitio.</figcaption></figure>
 
   <table>
     <tr><th>Dónde</th><th>Para qué sirve</th></tr>
@@ -602,6 +609,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
     <li>Para reordenar: arrastra los bloques.</li>
     <li>Guarda.</li>
   </ol>
+  <figure class="shot"><img width="2000" height="948" src="img/21-logos-bloques.jpg" alt="Sección Pewman Franja de logos abierta en el editor, con sus bloques de logo" loading="lazy"><figcaption>La sección <b>Pewman · Franja de logos</b> abierta con su flechita, en la página de Inicio. <b>①</b> <b>⊕ Agregar Logo</b> suma un logo nuevo al final de la fila. <b>②</b> Cada <b>Logo</b> de la lista es un bloque independiente: haz clic sobre uno para cambiarle la imagen, o arrástralo hacia arriba o abajo para cambiar el orden en que se ven. <b>③</b> Ojo con el <b>tacho</b>: ese borra la sección completa con todos sus logos, no un logo suelto. Para eliminar un solo logo, haz clic en ese bloque y usa <b>Eliminar bloque</b>.</figcaption></figure>
 
   <h3>Cambiar el premio destacado</h3>
   <p>Las dos secciones de premios tienen, además de los logos, campos propios en el panel de la sección:</p>
@@ -849,6 +857,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 <section class="cap" id="c13">
   <h2>13. Productos: precios, stock y fichas</h2>
   <p class="sub">Cambiar un precio toma menos de un minuto. Crear un producto nuevo, un rato más.</p>
+  <figure class="shot"><img width="2000" height="948" src="img/16-productos-lista.jpg" alt="Lista de productos del panel con Crioprotect y Nanoforte" loading="lazy"><figcaption>La lista que ves en <b>Productos</b>. <b>①</b> Haz clic sobre el <b>nombre</b> del producto para abrir su ficha: todo lo demás se edita desde adentro. <b>②</b> La columna <b>Inventario</b> dice «No se hace seguimiento del inventario», que es justamente cómo está configurada la tienda hoy: se vende sin descontar stock, así que nunca va a aparecer «Agotado» solo.</figcaption></figure>
 
   <h3>Cambiar un precio</h3>
   <ol class="pasos">
@@ -856,6 +865,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
     <li>Baja hasta <b>Variantes</b>: ahí están 1 L, 5 L y 20 L.</li>
     <li>Haz clic en la variante, escribe el precio nuevo y guarda.</li>
   </ol>
+  <figure class="shot"><img width="2000" height="948" src="img/18-producto-precios.jpg" alt="Tabla de variantes de Crioprotect con los precios de 1 L, 5 L y 20 L" loading="lazy"><figcaption>La tabla de variantes, más abajo dentro de la ficha del producto. <b>①</b> Cada <b>variante</b> es una presentación (1 L, 5 L, 20 L) con su propio precio y su propio código. <b>②</b> La columna <b>Precio</b> se edita directo desde esta tabla: haz clic en el número, escribe el nuevo y guarda. No hace falta entrar a cada variante por separado. <b>③</b> <b>Metacampos del producto</b> es la lista de campos especiales que alimenta la página del sitio; están explicados uno por uno más abajo en este mismo capítulo.</figcaption></figure>
   <div class="nota"><b>Los precios ya incluyen IVA</b>La tienda está configurada así: si pones $50.000, el cliente paga $50.000 con IVA incluido. No lo sumes aparte.</div>
 
   <h3>Stock</h3>
@@ -879,6 +889,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 
   <h3>Crear un producto nuevo</h3>
   <p>Se hace una sola vez por producto y la página se arma sola con lo que cargues:</p>
+  <figure class="shot"><img width="2000" height="948" src="img/17-producto-ficha.jpg" alt="Parte superior de la ficha de Crioprotect con Título, Descripción y Multimedia" loading="lazy"><figcaption>Así se ve la parte de arriba de la ficha de un producto. <b>①</b> <b>Título</b>: el nombre que ve el cliente en el sitio. <b>②</b> <b>Descripción</b>: el texto de la página, con su propia barra de negrita, cursiva, listas y enlaces. <b>③</b> <b>Multimedia</b>: las fotos. La <b>primera</b> de la fila es la principal (la que sale en las listas y en el carrito); para cambiar cuál va primera, arrastra las miniaturas. El recuadro con <b>+</b> agrega fotos nuevas.</figcaption></figure>
   <ol class="pasos">
     <li><b>Crear:</b> <span class="ruta">Productos → Agregar producto</span>. Título, descripción, fotos (la primera es la principal).</li>
     <li><b>Variantes:</b> crea las presentaciones (1 L, 5 L, 20 L) con su precio. En cada una escribe el <b>peso en kilos</b>: es obligatorio para calcular el envío.</li>
@@ -895,6 +906,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
   <h2>14. Pedidos: el día a día</h2>
   <p class="sub">Qué hacer cuando alguien compra.</p>
   <p>Cuando entra una compra te llega un correo y el pedido aparece en <span class="ruta">Pedidos</span>.</p>
+  <figure class="shot"><img width="2000" height="948" src="img/19-pedidos.jpg" alt="Pantalla de Pedidos del panel, todavía sin ventas registradas" loading="lazy"><figcaption>Así se ve <b>Pedidos</b> hoy: la tienda todavía no registra ventas, por eso sale el mensaje «Los pedidos se mostrarán aquí». <b>①</b> Cuando entre la primera compra va a aparecer en esta misma lista, y se abre haciendo clic sobre ella. <b>②</b> <b>Pedidos abandonados</b> guarda a quienes llegaron al carrito y no alcanzaron a pagar: esa lista vale la pena revisarla seguido, porque son personas que ya mostraron intención de comprar.</figcaption></figure>
   <h3>Preparar un envío</h3>
   <ol class="pasos">
     <li>Entra al pedido haciendo clic sobre él.</li>
@@ -912,6 +924,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 <section class="cap" id="c15">
   <h2>15. Catálogo completo de secciones</h2>
   <p class="sub">Las 39 piezas «Pewman ·» que aparecen en Agregar sección, agrupadas por lo que hacen. Las etiquetas indican qué bloques acepta cada una.</p>
+  <figure class="shot"><img width="2000" height="948" src="img/20-catalogo-secciones.jpg" alt="Panel Agregar sección del editor mostrando la lista de secciones Pewman" loading="lazy"><figcaption>El panel que se abre al tocar <b>Agregar sección</b>: aquí viven las piezas que están listadas en este capítulo. <b>①</b> Escribe <b>Pewman</b> en el <b>buscador</b> y la lista se reduce solo a las piezas hechas para este sitio. <b>②</b> Todas empiezan con <b>Pewman ·</b> y están en orden alfabético. Las que <i>no</i> llevan ese prefijo son piezas genéricas que trae el tema: funcionan, pero no están diseñadas con la línea gráfica de Pewman, así que conviene quedarse con las del prefijo.</figcaption></figure>
 
   <h4>Portadas y encabezados</h4>
   <div class="cat">
@@ -1130,7 +1143,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 
 
 <div id="fabs">
-  <a id="fab-wsp" href="https://wa.me/56926007409?text=Hola%20Crist%C3%B3bal%2C%20necesito%20ayuda%20con%20la%20web%20de%20Pewman%20con%3A%20" target="_blank" rel="noopener" aria-label="Pedir ayuda por WhatsApp" title="¿Te quedaste pegado? Escríbenos por WhatsApp">
+  <a id="fab-wsp" href="https://wa.me/56926007409?text=Hola%20Crist%C3%B3bal%2C%20te%20escribo%20desde%20el%20manual%20de%20la%20web%20de%20Pewman.%20Necesito%20ayuda%20con%3A%20" target="_blank" rel="noopener" aria-label="Pedir ayuda por WhatsApp" title="¿Te quedaste pegado? Escríbenos por WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.8h-.02c-1.75 0-3.47-.47-4.97-1.36l-.36-.21-3.7.97.99-3.61-.23-.37a9.79 9.79 0 0 1-1.5-5.23c0-5.42 4.42-9.83 9.85-9.83a9.78 9.78 0 0 1 6.96 2.89 9.75 9.75 0 0 1 2.88 6.95c0 5.42-4.42 9.83-9.85 9.83M20.5 3.49A11.8 11.8 0 0 0 12.05.01C5.5.01.18 5.33.18 11.86c0 2.09.55 4.13 1.59 5.93L.08 24l6.35-1.66a11.9 11.9 0 0 0 5.62 1.43h.01c6.54 0 11.86-5.32 11.87-11.86a11.8 11.8 0 0 0-3.47-8.42"/></svg>
   </a>
   <button id="fab-arriba" aria-label="Volver al índice" title="Volver al índice">
