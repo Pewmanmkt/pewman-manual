@@ -1,0 +1,1027 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Manual del sitio · Pewman Innovation</title>
+<style>
+:root{
+  --tinta:#343434; --gris:#6f6f6f; --gris-cl:#8a8a8a; --linea:#e4e4e4;
+  --rojo:#BD0028; --crema:#f9f9f9; --ok:#009633; --warn:#e0a800; --azul:#1499c7;
+  --sh:0 2px 4px rgba(52,52,52,.05), 0 16px 38px -20px rgba(52,52,52,.22);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f2f2f3;color:var(--tinta);
+  font:16.5px/1.68 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}
+.portada{background:linear-gradient(160deg,#2b2b2b,#434343);color:#fff;padding:64px 24px 56px;text-align:center}
+.portada .marca{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#e0a8b4;font-weight:700}
+.portada h1{font-size:clamp(28px,5vw,42px);margin:14px 0 12px;line-height:1.15;font-weight:800}
+.portada p{max-width:640px;margin:0 auto;color:#d8d8d8;font-size:17px}
+.portada .ver{margin-top:16px;font-size:13px;color:#b9b9b9}
+.wrap{max-width:940px;margin:0 auto;padding:0 18px}
+/* buscador */
+.buscador{max-width:940px;margin:-30px auto 0;padding:0 18px;position:relative;z-index:3}
+.buscador input{width:100%;padding:15px 20px;border-radius:14px;border:1px solid var(--linea);
+  font-size:16.5px;box-shadow:var(--sh);outline:none}
+.buscador input:focus{border-color:var(--rojo)}
+/* indice */
+.indice{background:#fff;border-radius:16px;padding:28px 32px;margin:22px auto 30px;
+  box-shadow:var(--sh);position:relative;max-width:940px}
+.indice h2{margin:0 0 16px;font-size:18px}
+.indice ol{margin:0;padding-left:20px;columns:2;column-gap:34px}
+.indice li{margin-bottom:9px;break-inside:avoid}
+.indice a{color:var(--tinta);text-decoration:none;border-bottom:1px solid var(--linea)}
+.indice a:hover{color:var(--rojo);border-color:var(--rojo)}
+/* mapa de tareas */
+.mapa{width:100%;border-collapse:collapse;font-size:15px}
+.mapa td{border:1px solid var(--linea);padding:9px 13px}
+.mapa td:first-child{font-weight:600;width:56%}
+.mapa a{color:var(--rojo);text-decoration:none}
+/* capitulos */
+section.cap{background:#fff;border-radius:16px;padding:34px 36px;margin-bottom:24px;border:1px solid var(--linea)}
+section.cap>h2{margin:0 0 6px;font-size:24px;color:var(--rojo);scroll-margin-top:20px}
+.sub{color:var(--gris);font-size:15.5px;margin:0 0 24px}
+h3{font-size:18.5px;margin:30px 0 10px;padding-top:4px;scroll-margin-top:20px}
+h4{font-size:16px;margin:20px 0 8px;color:#4a4a4a}
+p{margin:0 0 13px}
+ul,ol{margin:0 0 15px;padding-left:22px}
+li{margin-bottom:7px}
+.pasos{counter-reset:p;list-style:none;padding:0;margin:16px 0 20px}
+.pasos>li{counter-increment:p;position:relative;padding-left:46px;margin-bottom:16px}
+.pasos>li::before{content:counter(p);position:absolute;left:0;top:-1px;width:30px;height:30px;
+  border-radius:50%;background:var(--tinta);color:#fff;display:flex;align-items:center;
+  justify-content:center;font-weight:700;font-size:14.5px}
+.ruta{display:inline-block;background:#eef4f7;border:1px solid #d3e3ea;color:#1a5570;
+  padding:5px 12px;border-radius:7px;font-size:14px;font-weight:600;margin:3px 0}
+.ruta b{color:var(--rojo)}
+.nota,.ojo,.stop,.tip{padding:14px 18px;border-radius:0 10px 10px 0;margin:16px 0;font-size:15.3px}
+.nota{background:#eef4f7;border-left:4px solid var(--azul)}
+.ojo{background:#fff8e6;border-left:4px solid var(--warn)}
+.stop{background:#fdeaee;border-left:4px solid var(--rojo)}
+.tip{background:#eefaf1;border-left:4px solid var(--ok)}
+.nota b,.ojo b,.stop b,.tip b{display:block;margin-bottom:3px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px}
+th,td{border:1px solid var(--linea);padding:10px 13px;text-align:left;vertical-align:top}
+th{background:var(--crema);font-weight:600}
+.glos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:18px 0}
+.glos div{background:var(--crema);border-radius:12px;padding:17px 19px;border:1px solid var(--linea)}
+.glos b{display:block;color:var(--rojo);margin-bottom:5px;font-size:15.5px}
+.glos span{font-size:14.6px;color:#555;line-height:1.55}
+kbd{background:#fff;border:1px solid #c9c9c9;border-bottom-width:2px;border-radius:5px;
+  padding:2px 7px;font:600 13.5px/1 -apple-system,sans-serif}
+.arriba{display:block;text-align:right;font-size:13.5px;color:var(--gris-cl);text-decoration:none;margin-top:22px}
+.arriba:hover{color:var(--rojo)}
+footer{text-align:center;color:var(--gris-cl);font-size:14px;padding:26px 18px 48px}
+/* ---------- wireframes de la interfaz ---------- */
+.wf{background:#fafafa;border:1px solid #ddd;border-radius:12px;margin:18px 0 22px;overflow:hidden;
+  font-size:13px;line-height:1.4;box-shadow:inset 0 1px 0 #fff}
+.wf-cab{background:#1a1a1a;color:#eee;padding:8px 14px;display:flex;align-items:center;gap:10px;font-size:12.5px}
+.wf-cab .pill{background:#dbe9ff;color:#1a4a7a;border-radius:20px;padding:1px 9px;font-weight:700;font-size:11px}
+.wf-cab .sp{flex:1}
+.wf-cab .btn{background:#fff;color:#222;border-radius:7px;padding:3px 12px;font-weight:600}
+.wf-cab .btn.gris{background:#777;color:#eee}
+.wf-cuerpo{display:flex;min-height:170px}
+.wf-side{width:230px;background:#fff;border-right:1px solid #e2e2e2;padding:8px 0}
+.wf-side .grupo{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#999;padding:8px 16px 3px}
+.wf-item{padding:3px 16px;color:#333;display:flex;align-items:center;gap:8px}
+.wf-item.on{background:#f0f0f0;font-weight:700;border-left:3px solid var(--rojo);padding-left:13px}
+.wf-item.sub{padding-left:34px;color:#555}
+.wf-item.sub.on{padding-left:31px}
+.wf-item .mini{margin-left:auto;color:#b33;font-size:11px}
+.wf-azul{color:#1666c5;font-weight:600}
+.wf-main{flex:1;padding:14px 18px;color:#555}
+.wf-main .caja{background:#fff;border:1px solid #e2e2e2;border-radius:9px;padding:10px 14px;margin-bottom:10px}
+.wf-main .titulo{font-weight:700;color:#222;margin-bottom:6px}
+.wf-menu{background:#fff;border:1px solid #d5d5d5;border-radius:10px;box-shadow:0 8px 22px -8px rgba(0,0,0,.25);
+  width:210px;padding:6px 0;margin:8px 0}
+.wf-menu div{padding:6px 16px;color:#333}
+.wf-menu div.rojo{color:#b3122f}
+.wf-menu hr{border:none;border-top:1px solid #eee;margin:5px 0}
+.wf-etq{font-size:11px;color:#8a8a8a;padding:8px 14px 2px;font-style:italic}
+.wf-pie{font-size:12px;color:#8a8a8a;padding:8px 14px;border-top:1px dashed #ddd;background:#fdfdfd}
+/* catalogo */
+.cat{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0}
+.cat .c{background:var(--crema);border:1px solid var(--linea);border-radius:10px;padding:13px 15px}
+.cat .c h5{margin:0 0 4px;font-size:14.5px}
+.cat .c p{font-size:13px;color:var(--gris);margin:0 0 7px;min-height:32px}
+.cat .c .b{font-size:11.5px;background:#e9e2d2;color:#6b5b2a;padding:2px 8px;border-radius:20px;margin-right:4px;display:inline-block;margin-bottom:3px}
+.cat .c .b.az{background:#dcecf4;color:#155a7d}
+@media (max-width:640px){
+  .indice ol{columns:1}
+  section.cap{padding:24px 19px;border-radius:13px}
+  section.cap>h2{font-size:21px}
+  table{font-size:13.5px} th,td{padding:7px 9px}
+  .pasos>li{padding-left:40px}
+  .wf-cuerpo{flex-direction:column}
+  .wf-side{width:100%;border-right:none;border-bottom:1px solid #e2e2e2}
+  .mapa td:first-child{width:auto}
+}
+@media print{
+  body{background:#fff}
+  .buscador,.arriba{display:none}
+  .indice{box-shadow:none}
+  section.cap{border:none;page-break-inside:avoid;padding:0 0 20px}
+}
+</style>
+</head>
+<body id="inicio">
+
+<div class="portada">
+  <div class="marca">Pewman Innovation</div>
+  <h1>Manual del sitio web</h1>
+  <p>Todo lo que necesitas para administrar la página por tu cuenta: textos, fotos, secciones, equipo, blog y más. Escrito para partir de cero: no hace falta saber nada de tecnología.</p>
+  <div class="ver">Versión 2 · Agosto 2026 · Revisado contra la pantalla real de Shopify</div>
+</div>
+
+<div class="buscador">
+  <input id="q" type="search" placeholder="Busca una tarea: equipo, logo, blog, precio, sección...">
+</div>
+
+<nav class="indice" id="indice">
+  <h2>Contenido</h2>
+  <ol>
+    <li><a href="#c1">Antes de empezar</a></li>
+    <li><a href="#c2">La idea de fondo: piezas de Lego</a></li>
+    <li><a href="#c3">El editor visual del sitio</a></li>
+    <li><a href="#c4">Secciones: agregar, mover, ocultar, borrar</a></li>
+    <li><a href="#c5">Bloques: los elementos dentro de cada sección</a></li>
+    <li><a href="#c6">El equipo: personas, cargos y regiones</a></li>
+    <li><a href="#c7">Logos, premios y certificaciones</a></li>
+    <li><a href="#c8">Blog: publicar noticias y artículos</a></li>
+    <li><a href="#c9">Crear una página nueva desde cero</a></li>
+    <li><a href="#c10">Recetas rápidas por sección</a></li>
+    <li><a href="#c11">Fotos y archivos</a></li>
+    <li><a href="#c12">El menú de navegación y el pie de página</a></li>
+    <li><a href="#c13">Productos: precios, stock y fichas</a></li>
+    <li><a href="#c14">Pedidos: el día a día</a></li>
+    <li><a href="#c15">Catálogo completo de secciones</a></li>
+    <li><a href="#c16">Reglas de oro y qué no tocar</a></li>
+    <li><a href="#c17">Si algo sale mal</a></li>
+    <li><a href="#c18">Preguntas frecuentes</a></li>
+    <li><a href="#c19">Glosario</a></li>
+  </ol>
+</nav>
+
+<div class="wrap">
+
+<section class="cap" id="c0">
+  <h2>¿Qué quieres hacer hoy?</h2>
+  <p class="sub">Ubica tu tarea y anda directo al capítulo. Este manual está pensado para consultarlo por tema, no para leerlo entero.</p>
+  <table class="mapa">
+    <tr><td>Cambiar un texto o una foto de cualquier página</td><td><a href="#c3">Cap. 3</a></td></tr>
+    <tr><td>Agregar, quitar o reordenar una sección</td><td><a href="#c4">Cap. 4</a></td></tr>
+    <tr><td>Sumar o sacar a una persona del equipo</td><td><a href="#c6">Cap. 6</a></td></tr>
+    <tr><td>Agregar el título académico de alguien (PhD, Ing., Dr.)</td><td><a href="#c6-titulo">Cap. 6</a></td></tr>
+    <tr><td>Agregar o quitar un logo de empresa, premio o certificación</td><td><a href="#c7">Cap. 7</a></td></tr>
+    <tr><td>Publicar una noticia de prensa o un artículo</td><td><a href="#c8">Cap. 8</a></td></tr>
+    <tr><td>Cambiar la fecha con que aparece una noticia</td><td><a href="#c8-fecha">Cap. 8</a></td></tr>
+    <tr><td>Crear una página nueva completa</td><td><a href="#c9">Cap. 9</a></td></tr>
+    <tr><td>Editar los contadores del inicio (+5000 hectáreas...)</td><td><a href="#c10-contador">Cap. 10</a></td></tr>
+    <tr><td>Agregar una pregunta frecuente, una banda de llamado a la acción o un bloque imagen + texto</td><td><a href="#c10">Cap. 10</a></td></tr>
+    <tr><td>Agregar un paper, una patente o un caso de éxito</td><td><a href="#c10-prueba">Cap. 10</a></td></tr>
+    <tr><td>Cambiar la portada de la guía descargable o su PDF</td><td><a href="#c10-guia">Cap. 10</a></td></tr>
+    <tr><td>Subir una foto o un PDF y obtener su enlace</td><td><a href="#c11">Cap. 11</a></td></tr>
+    <tr><td>Agregar algo al menú superior o al pie de página</td><td><a href="#c12">Cap. 12</a></td></tr>
+    <tr><td>Cambiar un precio</td><td><a href="#c13">Cap. 13</a></td></tr>
+    <tr><td>Despachar un pedido</td><td><a href="#c14">Cap. 14</a></td></tr>
+    <tr><td>Ver todas las secciones disponibles y qué hace cada una</td><td><a href="#c15">Cap. 15</a></td></tr>
+    <tr><td>Algo se ve raro o desapareció</td><td><a href="#c17">Cap. 17</a></td></tr>
+  </table>
+</section>
+
+<section class="cap" id="c1">
+  <h2>1. Antes de empezar</h2>
+  <p class="sub">Cómo entrar y qué es cada cosa que ves.</p>
+
+  <h3>Entrar al panel</h3>
+  <ol class="pasos">
+    <li>Abre <b>admin.shopify.com</b> en el navegador.</li>
+    <li>Entra con tu correo y contraseña. Si administras más de una tienda, elige <b>Pewman Innovation</b>.</li>
+    <li>Listo. Esa pantalla es el <b>panel de administración</b>: desde ahí se maneja todo el sitio y la tienda.</li>
+  </ol>
+  <div class="tip"><b>Guárdalo en favoritos</b>Vas a entrar seguido. Un marcador en el navegador te ahorra escribir la dirección cada vez.</div>
+
+  <h3>El menú de la izquierda</h3>
+  <p>Es tu mapa. Así se ve y esto es lo que usa cada parte:</p>
+
+  <div class="wf">
+    <div class="wf-cuerpo">
+      <div class="wf-side">
+        <div class="wf-item">Inicio</div>
+        <div class="wf-item">Pedidos</div>
+        <div class="wf-item">Productos</div>
+        <div class="wf-item">Clientes</div>
+        <div class="wf-item">Contenido</div>
+        <div class="wf-item sub">Metaobjetos</div>
+        <div class="wf-item sub">Archivos</div>
+        <div class="wf-item sub">Menús</div>
+        <div class="wf-item sub">Artículos del blog</div>
+        <div class="wf-item" style="margin-top:6px">Canales de ventas</div>
+        <div class="wf-item sub on">Tienda online</div>
+        <div class="wf-item sub" style="padding-left:48px">Páginas</div>
+        <div class="wf-item" style="margin-top:6px">Configuración</div>
+      </div>
+      <div class="wf-main">
+        <div class="caja"><div class="titulo">Así se ve el menú lateral del panel</div>
+        Algunas opciones (Metaobjetos, Archivos, Menús, Artículos del blog) aparecen al hacer clic sobre <b>Contenido</b>. Lo mismo con <b>Tienda online</b>, que muestra Páginas al seleccionarla.</div>
+      </div>
+    </div>
+    <div class="wf-pie">Dibujo esquemático del panel real de Shopify (agosto 2026).</div>
+  </div>
+
+  <table>
+    <tr><th>Dónde</th><th>Para qué sirve</th></tr>
+    <tr><td><b>Pedidos</b></td><td>Las compras que llegan. Quién compró, qué compró y a dónde enviarlo.</td></tr>
+    <tr><td><b>Productos</b></td><td>Crioprotect, Nanoforte y los que vengan. Precios, presentaciones, stock y fotos.</td></tr>
+    <tr><td><b>Clientes</b></td><td>La gente que ha comprado o dejado sus datos.</td></tr>
+    <tr><td><b>Contenido → Artículos del blog</b></td><td>Las noticias de prensa y los artículos técnicos.</td></tr>
+    <tr><td><b>Contenido → Archivos</b></td><td>Todas las fotos y PDF que usa el sitio.</td></tr>
+    <tr><td><b>Contenido → Menús</b></td><td>El menú superior del sitio y los enlaces del pie de página.</td></tr>
+    <tr><td><b>Tienda online</b></td><td>El diseño del sitio: el tema y el botón <b>Editar tema</b>. Es donde más vas a trabajar.</td></tr>
+    <tr><td><b>Tienda online → Páginas</b></td><td>Crear y administrar páginas: Nosotros, Casos, Contacto y las nuevas que hagas.</td></tr>
+    <tr><td><b>Configuración</b></td><td>Envíos, pagos, dominios y políticas. Se toca poco, y con cuidado.</td></tr>
+  </table>
+
+  <div class="nota"><b>Si el menú se ve distinto</b>Shopify actualiza su panel de vez en cuando y a veces mueve una opción de lugar. Si no encuentras algo, usa el buscador de arriba (la lupa, o <kbd>⌘ K</kbd>): escribe lo que buscas, por ejemplo «archivos», y te lleva directo.</div>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c2">
+  <h2>2. La idea de fondo: piezas de Lego</h2>
+  <p class="sub">Cinco palabras y un concepto. Con esto entiendes todo el resto.</p>
+  <div class="glos">
+    <div><b>Página</b><span>Cada pantalla del sitio: Inicio, Nosotros, Casos, Contacto. Cada producto también tiene su página.</span></div>
+    <div><b>Sección</b><span>Un bloque grande dentro de una página: el carrusel del inicio, el equipo, los premios, el formulario. Se agregan, se ordenan y se quitan a gusto.</span></div>
+    <div><b>Bloque</b><span>Una pieza dentro de una sección: cada persona del equipo es un bloque, cada logo es un bloque, cada pregunta frecuente es un bloque.</span></div>
+    <div><b>Tema</b><span>El diseño completo del sitio: colores, tipografías y el catálogo de secciones. El sitio usa un tema hecho a medida para Pewman.</span></div>
+    <div><b>Producto</b><span>Lo que se vende. Tiene precio, presentaciones (1 L, 5 L, 20 L) y fotos.</span></div>
+  </div>
+  <p>El sitio completo está armado como <b>piezas de Lego</b>: páginas que contienen secciones, y secciones que contienen bloques. Tu trabajo como administrador es elegir piezas, ordenarlas y rellenarlas con textos y fotos. <b>Nunca necesitas tocar código.</b></p>
+  <p>Todas las piezas de diseño del sitio parten con el nombre <b>«Pewman ·»</b> (Pewman · Equipo, Pewman · Premios, Pewman · Preguntas...). Cuando veas ese prefijo, es una sección diseñada especialmente para este sitio: puedes usarla con confianza en cualquier página. El capítulo 15 tiene el catálogo completo.</p>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c3">
+  <h2>3. El editor visual del sitio</h2>
+  <p class="sub">La herramienta principal. Funciona como un editor de arrastrar y soltar: eliges, escribes, mueves y guardas.</p>
+
+  <h3>Cómo entrar</h3>
+  <ol class="pasos">
+    <li>En el menú de la izquierda, haz clic en <span class="ruta">Tienda online</span>.</li>
+    <li>Verás el tema del sitio con la etiqueta <b>Activo</b>. Haz clic en el botón negro <b>Editar tema</b>.</li>
+    <li>Se abre el editor: a la izquierda la lista de secciones, al centro la vista previa del sitio.</li>
+  </ol>
+
+  <div class="wf">
+    <div class="wf-cab">
+      <span>Pewman - sitio</span><span class="pill">Activo</span>
+      <span class="sp"></span>
+      <span>Página de inicio ▾</span>
+      <span class="sp"></span>
+      <span>🖥</span><span>📱</span><span>↩︎</span><span>↪︎</span><span>···</span>
+      <span class="btn gris">Guardar</span>
+    </div>
+    <div class="wf-cuerpo">
+      <div class="wf-side">
+        <div class="wf-etq">Header</div>
+        <div class="wf-item sub">Pewman · Header</div>
+        <div class="wf-item sub wf-azul">⊕ Agregar sección</div>
+        <div class="wf-etq">Plantilla</div>
+        <div class="wf-item sub">Pewman · Hero carrusel</div>
+        <div class="wf-item sub">Pewman · Premios</div>
+        <div class="wf-item sub on">Pewman · Estadísticas</div>
+        <div class="wf-item sub">Pewman · Soluciones</div>
+        <div class="wf-item sub wf-azul">⊕ Agregar sección</div>
+        <div class="wf-etq">Footer</div>
+        <div class="wf-item sub">Pewman · Footer</div>
+      </div>
+      <div class="wf-main">
+        <div class="caja" style="min-height:120px"><div class="titulo">Vista previa del sitio</div>
+        Es el sitio de verdad, en vivo. Puedes hacer clic sobre cualquier texto o foto de la vista previa y se abre su panel de edición a la derecha.</div>
+      </div>
+    </div>
+    <div class="wf-pie">Partes del editor: barra superior (página, vista celular, deshacer, Guardar), lista de secciones a la izquierda, vista previa al centro.</div>
+  </div>
+
+  <h3>Moverte entre páginas</h3>
+  <p>Arriba al centro hay un selector que dice <b>Página de inicio</b>. Haz clic y elige qué quieres editar:</p>
+  <ul>
+    <li><b>Página de inicio</b>: la portada del sitio.</li>
+    <li><b>Productos</b>: las páginas de Crioprotect y Nanoforte.</li>
+    <li><b>Páginas</b>: Nosotros, Casos, Contacto, Patentes y papers, Prensa y medios, y las que crees tú.</li>
+    <li><b>Blogs</b> y <b>Artículos del blog</b>: el diseño de los listados y de las notas.</li>
+  </ul>
+  <div class="nota"><b>Verás nombres cortos como «empresa» o «casos»</b>Al abrir Páginas, el selector muestra la plantilla de cada página con su nombre interno: «empresa» es Nosotros, «casos» es Casos de éxito, «prensa» es Prensa y medios, «contacto» es Contacto. Aparece también una plantilla antigua «contact»: ignórala.</div>
+
+  <h3>Cambiar un texto</h3>
+  <ol class="pasos">
+    <li>Elige la página donde está el texto.</li>
+    <li>Haz clic sobre el texto en la vista previa (o sobre su sección en la lista izquierda).</li>
+    <li>En el panel de la derecha aparecen los campos editables. Escribe el texto nuevo: la vista previa se actualiza al tiro.</li>
+    <li>Toca <b>Guardar</b>, arriba a la derecha.</li>
+  </ol>
+
+  <h3>Cambiar una foto</h3>
+  <ol class="pasos">
+    <li>Haz clic en la sección que tiene la foto.</li>
+    <li>En el panel derecho, ubica el recuadro de la imagen y toca <b>Cambiar</b>.</li>
+    <li>Elige una imagen ya subida o sube una nueva desde tu computador.</li>
+    <li>Guarda.</li>
+  </ol>
+  <div class="tip"><b>Tamaños recomendados</b>En el capítulo 11 hay una tabla con el tamaño ideal de foto para cada uso (fondos, personas, logos). Si una foto queda cortada, ahí está la solución.</div>
+
+  <h3>Guardar: qué pasa exactamente</h3>
+  <div class="ojo"><b>En el tema activo, Guardar publica de inmediato</b>Mientras no toques Guardar, el sitio real sigue igual y puedes probar sin miedo (si te arrepientes, cierra la pestaña y no pasa nada). Pero al tocar Guardar, el cambio queda visible para todo el mundo al instante. Revisa la vista previa, y también en celular, antes de guardar.</div>
+  <p>Dentro del editor también tienes las flechas <b>deshacer</b> y <b>rehacer</b> (arriba a la derecha, junto al botón Guardar) para revertir los últimos cambios de la sesión.</p>
+
+  <h3>Revisar cómo se ve en celular</h3>
+  <ol class="pasos">
+    <li>Arriba a la derecha hay dos íconos: un computador y un teléfono.</li>
+    <li>Toca el teléfono: la vista previa cambia al formato de celular.</li>
+    <li>Revisa que los textos se lean y las fotos se vean bien. Después vuelve al ícono del computador.</li>
+  </ol>
+  <div class="tip"><b>Hazlo siempre antes de guardar</b>La mayoría de las visitas entra desde el teléfono. Diez segundos de revisión evitan sorpresas.</div>
+
+  <h3>Para cambios grandes: trabaja en una copia</h3>
+  <p>Si vas a rediseñar una página completa o probar algo experimental, no lo hagas sobre el tema activo. Haz una copia y trabaja tranquilo:</p>
+  <ol class="pasos">
+    <li>Ve a <span class="ruta">Tienda online</span> y en el tema activo toca el botón <b>···</b> (al lado de Editar tema).</li>
+    <li>Elige <b>Duplicar</b>. La copia aparece más abajo, en <b>Temas en borrador</b>.</li>
+    <li>Toca <b>Editar tema</b> en la copia y haz ahí todos los cambios. Nada de lo que hagas se ve en el sitio real.</li>
+    <li>Cuando esté listo y revisado, toca <b>Publicar</b> en esa copia: pasa a ser el sitio real.</li>
+  </ol>
+  <div class="stop"><b>Cuidado al publicar una copia antigua</b>Al publicar un borrador, se publica TODO tal como está en ese borrador. Si después de crear la copia alguien siguió editando el tema activo (textos, personas, noticias destacadas), esos cambios no están en la copia y se pierden de la vista al publicarla. Regla simple: crea la copia, haz el cambio y publícala pronto. No dejes borradores viejos dando vueltas.</div>
+
+  <div class="nota"><b>El menú ··· del tema</b>Ahí también están <b>Ver</b> (vista previa sin editar), <b>Cambiar nombre</b> (útil para ponerle fecha a las copias, por ejemplo «Pewman - prueba equipo 25 ago») y <b>Descargar archivo del tema</b> (respaldo). Las opciones <b>Editar código</b> y <b>Editar contenido predeterminado</b> no las uses.</div>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c4">
+  <h2>4. Secciones: agregar, mover, ocultar, borrar</h2>
+  <p class="sub">Las piezas grandes de cada página. Aquí está el corazón del sistema.</p>
+
+  <h3>Agregar una sección</h3>
+  <ol class="pasos">
+    <li>En el editor, elige la página donde quieres agregarla.</li>
+    <li>En la lista izquierda, toca <b>⊕ Agregar sección</b> (dentro del grupo <b>Plantilla</b>).</li>
+    <li>Se abre el catálogo con un buscador. Escribe <b>pewman</b> y aparecen todas las secciones diseñadas para el sitio.</li>
+    <li>Pasa el mouse sobre cada nombre para ver una vista previa en miniatura. Haz clic en la que quieras.</li>
+    <li>La sección aparece en la página con contenido de ejemplo. Rellénala con tus textos y fotos.</li>
+    <li>Arrástrala a su posición y guarda.</li>
+  </ol>
+
+  <div class="wf">
+    <div class="wf-cuerpo">
+      <div class="wf-side" style="width:260px">
+        <div class="wf-item" style="border:1px solid #ccc;border-radius:7px;margin:8px 12px;color:#888">🔍 Buscar secciones</div>
+        <div class="wf-item" style="gap:14px"><b style="border-bottom:2px solid #333;padding-bottom:2px">Secciones</b> <span style="color:#999">Apps</span></div>
+        <div class="wf-item on">Pewman · Artículo</div>
+        <div class="wf-item">Pewman · Banda CTA</div>
+        <div class="wf-item">Pewman · Banner imagen</div>
+        <div class="wf-item">Pewman · Beneficios</div>
+        <div class="wf-item">Pewman · Casos de éxito</div>
+        <div class="wf-item">Pewman · Certificaciones</div>
+        <div class="wf-item" style="color:#999">... y todas las demás</div>
+      </div>
+      <div class="wf-main">
+        <div class="caja" style="min-height:110px"><div class="titulo">Vista previa en miniatura</div>
+        Al pasar el mouse por un nombre, aquí aparece cómo se ve la sección antes de agregarla.</div>
+      </div>
+    </div>
+    <div class="wf-pie">El panel «Agregar sección»: buscador arriba, catálogo abajo, vista previa a la derecha.</div>
+  </div>
+
+  <h3>Mover una sección</h3>
+  <p>En la lista izquierda, toma la sección con el mouse y <b>arrástrala</b> hacia arriba o abajo. El orden de la lista es el orden de la página. Guarda al terminar.</p>
+
+  <h3>Ocultar una sección (sin borrarla)</h3>
+  <p>Pasa el mouse sobre la sección en la lista izquierda y toca el <b>ícono del ojo</b>. La sección desaparece del sitio pero queda guardada con todo su contenido. Para mostrarla de nuevo, toca el ojo otra vez.</p>
+  <div class="tip"><b>Ante la duda, oculta en vez de borrar</b>Ocultar se deshace con un clic. Borrar significa rearmar la sección entera si te arrepientes.</div>
+
+  <h3>Duplicar, copiar o renombrar una sección</h3>
+  <p>Haz clic en la sección y abre el menú <b>···</b> en la parte alta del panel derecho. Ahí están:</p>
+  <table>
+    <tr><th>Opción</th><th>Qué hace</th></tr>
+    <tr><td><b>Duplicar</b></td><td>Crea una copia idéntica justo debajo. Perfecto para repetir un diseño que ya te gusta y solo cambiarle el contenido.</td></tr>
+    <tr><td><b>Copiar</b></td><td>Copia la sección para pegarla en otra página (en la otra página: Agregar sección → pegar).</td></tr>
+    <tr><td><b>Cambiar nombre</b></td><td>Cambia cómo se llama en la lista izquierda (no cambia nada en el sitio). Útil si tienes dos secciones iguales: «Premios (arriba)» y «Premios (abajo)».</td></tr>
+    <tr><td><b>Ocultar</b></td><td>Lo mismo que el ícono del ojo.</td></tr>
+    <tr><td><b>Eliminar</b></td><td>Borra la sección y su contenido. Pide confirmación.</td></tr>
+  </table>
+  <div class="nota"><b>En ese menú también aparece «Editar código»</b>No lo uses: abre el archivo técnico de la sección y un cambio accidental puede romperla. Todo lo editable ya está disponible en los campos del panel.</div>
+
+  <h3>Borrar una sección</h3>
+  <ol class="pasos">
+    <li>Haz clic en la sección (lista izquierda o vista previa).</li>
+    <li>Abajo del panel derecho toca <b>Eliminar sección</b> (o usa el menú ··· → Eliminar).</li>
+    <li>Guarda.</li>
+  </ol>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c5">
+  <h2>5. Bloques: los elementos dentro de cada sección</h2>
+  <p class="sub">Una persona, un logo, una pregunta, un slide: todos son bloques y todos se manejan igual.</p>
+  <p>Cuando una sección contiene elementos repetibles, en la lista izquierda aparece con una <b>flechita ›</b>. Al abrirla, ves sus bloques y el enlace <b>⊕ Agregar bloque</b>.</p>
+  <ol class="pasos">
+    <li><b>Agregar:</b> abre la sección con la flechita y toca <b>⊕ Agregar bloque</b>. Si hay más de un tipo de bloque, elige cuál.</li>
+    <li><b>Editar:</b> haz clic en el bloque y llena sus campos en el panel derecho.</li>
+    <li><b>Reordenar:</b> arrastra el bloque dentro de la lista.</li>
+    <li><b>Ocultar:</b> menú ··· del bloque → Ocultar (queda guardado, invisible).</li>
+    <li><b>Quitar:</b> botón <b>Eliminar bloque</b> al final del panel del bloque.</li>
+    <li>Guarda al terminar.</li>
+  </ol>
+  <div class="nota"><b>Los bloques también se duplican</b>El menú ··· de cada bloque tiene Copiar y Duplicar, igual que las secciones. Para agregar 3 preguntas frecuentes parecidas, escribe una y duplícala dos veces.</div>
+  <div class="tip"><b>Algunas secciones tienen bloques dentro de bloques</b>El equipo, por ejemplo: la sección contiene <b>regiones</b>, y cada región contiene <b>integrantes</b>. La línea de tiempo de Nosotros y los ensayos de Casos funcionan igual. Se navegan con las mismas flechitas.</div>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c6">
+  <h2>6. El equipo: personas, cargos y regiones</h2>
+  <p class="sub">Gente nueva, cambios de cargo, títulos académicos y países nuevos. Todo en la página Nosotros.</p>
+
+  <p>El equipo está agrupado por región (Chile, Perú, Europa) y dentro de cada región van las personas. Así se ve en el editor:</p>
+
+  <div class="wf">
+    <div class="wf-cuerpo">
+      <div class="wf-side" style="width:260px">
+        <div class="wf-item">▾ Pewman · Equipo <span class="mini">🗑 👁</span></div>
+        <div class="wf-item sub wf-azul">⊕ Agregar bloque</div>
+        <div class="wf-item sub">▾ Región del equipo (Chile)</div>
+        <div class="wf-item sub wf-azul" style="padding-left:48px">⊕ Agregar bloque</div>
+        <div class="wf-item sub" style="padding-left:48px">👤 Integrante</div>
+        <div class="wf-item sub" style="padding-left:48px">👤 Integrante</div>
+        <div class="wf-item sub on" style="padding-left:45px">👤 Integrante</div>
+        <div class="wf-item sub">› Región del equipo (Perú)</div>
+        <div class="wf-item sub">› Región del equipo (Europa)</div>
+      </div>
+      <div class="wf-main">
+        <div class="caja"><div class="titulo">Integrante</div>
+          Foto · Iniciales (si no hay foto) · Nombre · Cargo · <b>Título académico (opcional)</b> · LinkedIn (opcional)
+          <div style="color:#b3122f;margin-top:8px">🗑 Eliminar bloque</div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-pie">La sección Equipo en la lista izquierda del editor, con el panel de un Integrante a la derecha.</div>
+  </div>
+
+  <h3>Agregar una persona a una región que ya existe</h3>
+  <ol class="pasos">
+    <li>Entra al editor (<span class="ruta">Tienda online → <b>Editar tema</b></span>) y elige la página <b>Nosotros</b> (en el selector de arriba: Páginas → empresa).</li>
+    <li>En la lista izquierda, abre <b>Pewman · Equipo</b> con la flechita.</li>
+    <li>Abre la región que corresponde (Chile, Perú o Europa).</li>
+    <li>Toca <b>⊕ Agregar bloque → Integrante</b>.</li>
+    <li>Llena los campos: foto, nombre, cargo, título académico si tiene, y LinkedIn si tiene.</li>
+    <li>Arrastra el bloque si quieres cambiar su posición dentro de la región.</li>
+    <li>Guarda.</li>
+  </ol>
+
+  <h3 id="c6-titulo">El título académico (PhD, Dr., Ing.)</h3>
+  <p>Cada integrante tiene el campo <b>Título académico (opcional)</b>. Lo que escribas ahí aparece bajo el cargo, en el color corporativo. Ejemplos: «PhD en Microbiología», «Ing. Agrónoma», «Bioquímico, MSc». Si la persona no tiene título que destacar, deja el campo vacío y no se muestra nada.</p>
+
+  <h3>Cambiar el cargo o la foto de alguien</h3>
+  <ol class="pasos">
+    <li>En la misma sección, haz clic sobre la persona (en la lista o directamente en la vista previa).</li>
+    <li>Edita el campo que necesites. Para la foto: toca la imagen → <b>Cambiar</b>.</li>
+    <li>Guarda.</li>
+  </ol>
+
+  <h3>Quitar a alguien</h3>
+  <p>Haz clic en su bloque y toca <b>Eliminar bloque</b> al final del panel. Si la salida es temporal, mejor usa el menú ··· → <b>Ocultar</b>: la persona desaparece del sitio pero su ficha queda guardada.</p>
+
+  <h3>Agregar un país nuevo</h3>
+  <ol class="pasos">
+    <li>En <b>Pewman · Equipo</b>, toca el <b>⊕ Agregar bloque</b> de la sección (el de arriba) y elige <b>Región del equipo</b>.</li>
+    <li>Escribe el nombre de la región, por ejemplo «México».</li>
+    <li>Abre la región nueva y agrega sus <b>Integrantes</b> igual que arriba.</li>
+    <li>Arrastra la región para ubicarla en el orden que quieras y guarda.</li>
+  </ol>
+
+  <div class="tip"><b>Las fotos del equipo</b>Usa fotos <b>cuadradas</b> y parejas entre sí (todas de medio cuerpo o todas de rostro) para que la grilla se vea ordenada. Si alguien no tiene foto, escribe sus iniciales en el campo «Iniciales» y el sitio muestra un recuadro elegante con ellas.</div>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c7">
+  <h2>7. Logos, premios y certificaciones</h2>
+  <p class="sub">Cuatro lugares del sitio muestran logos. Todos funcionan con la misma lógica de bloques.</p>
+
+  <table>
+    <tr><th>Qué</th><th>Dónde está</th><th>Sección</th></tr>
+    <tr><td>Empresas que confían</td><td>Inicio</td><td>Pewman · Franja de logos</td></tr>
+    <tr><td>Premios (carrusel con destacado)</td><td>Inicio</td><td>Pewman · Premios</td></tr>
+    <tr><td>Premios y respaldo (con premio destacado grande)</td><td>Nosotros</td><td>Pewman · Premios</td></tr>
+    <tr><td>Certificaciones (SAG, Ecocert)</td><td>Páginas de producto</td><td>Pewman · Certificaciones</td></tr>
+  </table>
+
+  <h3>Agregar o quitar un logo (sirve para los cuatro casos)</h3>
+  <ol class="pasos">
+    <li>Entra al editor y elige la página (Inicio, Nosotros o el producto).</li>
+    <li>Abre la sección correspondiente con su flechita. Verás un bloque por cada logo.</li>
+    <li>Para agregar: <b>⊕ Agregar bloque → Logo</b>, sube la imagen y escribe el <b>texto alternativo</b> (el nombre de la empresa o premio).</li>
+    <li>Para quitar: clic en el logo → <b>Eliminar bloque</b>.</li>
+    <li>Para reordenar: arrastra los bloques.</li>
+    <li>Guarda.</li>
+  </ol>
+
+  <h3>Cambiar el premio destacado</h3>
+  <p>Las dos secciones de premios tienen, además de los logos, campos propios en el panel de la sección:</p>
+  <ul>
+    <li><b>En el Inicio:</b> Título, Texto (el párrafo del reconocimiento) e Imagen destacada (el sello grande).</li>
+    <li><b>En Nosotros:</b> Título, Subtítulo, y el premio destacado con su título, descripción e imagen.</li>
+  </ul>
+  <p>Haz clic en la sección (no en un logo) y edita esos campos directamente.</p>
+
+  <div class="tip"><b>Formato ideal de los logos</b>PNG con fondo transparente o blanco, de al menos 400 px de ancho. Los logos con fondos de colores distintos se ven desordenados en la franja.</div>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c8">
+  <h2>8. Blog: publicar noticias y artículos</h2>
+  <p class="sub">Esto no pasa por el editor visual: se publica desde el panel y aparece solo en el sitio.</p>
+
+  <p>El sitio tiene <b>dos blogs</b> y cada uno alimenta partes distintas:</p>
+  <table>
+    <tr><th>Blog</th><th>Dónde aparece</th><th>Para qué</th></tr>
+    <tr><td><b>Prensa y medios</b></td><td>Página Prensa y medios + tarjetas «Prensa» del Inicio</td><td>Apariciones en medios, hitos, eventos</td></tr>
+    <tr><td><b>Artículos y papers</b></td><td>Página Patentes y papers + tarjetas «Artículos» del Inicio</td><td>Contenido técnico y científico propio</td></tr>
+  </table>
+
+  <h3>Publicar una entrada nueva</h3>
+  <ol class="pasos">
+    <li>Ve a <span class="ruta">Contenido → Artículos del blog</span>.</li>
+    <li>Toca <b>Agregar artículo del blog</b> (arriba a la derecha).</li>
+    <li>Escribe el <b>título</b> y el <b>contenido</b>.</li>
+    <li>En el panel derecho, en <b>Organización → Blog</b>, elige a cuál blog va: <b>Prensa y medios</b> o <b>Artículos y papers</b>. Este paso define dónde aparece.</li>
+    <li>En <b>Autor</b> puedes poner el medio («El Mercurio Campo») o el autor real del artículo.</li>
+    <li>Sube la <b>imagen</b> destacada: es la foto de la tarjeta en los listados.</li>
+    <li>Baja hasta <b>Extracto</b> y escribe 1 o 2 líneas de resumen (es lo que se lee en la tarjeta).</li>
+    <li>En <b>Visibilidad</b> elige <b>Visible</b> y guarda. Listo: aparece solo en el sitio.</li>
+  </ol>
+  <div class="tip"><b>Para escribirlo con calma</b>Déjalo en <b>Oculto</b> mientras lo redactas. Cuando esté listo, lo cambias a Visible y recién ahí sale al sitio.</div>
+
+  <h3 id="c8-fecha">La fecha de la entrada (importa mucho)</h3>
+  <p>Las tarjetas de prensa muestran la fecha y <b>el listado se ordena por fecha, de la más nueva a la más antigua</b>. Shopify le pone a cada entrada la fecha del día en que la haces visible, pero puedes cambiarla:</p>
+  <ol class="pasos">
+    <li>Dentro de la entrada, mira el panel <b>Visibilidad</b>: bajo «Visible» aparece «A partir del [fecha]».</li>
+    <li>Toca el <b>lápiz</b> al lado de esa fecha.</li>
+    <li>Pon la fecha real de la publicación original (por ejemplo, el día en que salió la nota en el diario) y guarda.</li>
+  </ol>
+  <div class="nota"><b>Para qué sirve</b>Si cargas hoy una nota que salió en marzo, ponle la fecha de marzo: así queda ordenada en su lugar correcto dentro del listado y la tarjeta muestra la fecha verdadera.</div>
+
+  <h3>Editar o corregir una entrada</h3>
+  <p>Ve a <span class="ruta">Contenido → Artículos del blog</span>, haz clic en la entrada, corrige y guarda. Los cambios se reflejan de inmediato.</p>
+
+  <h3>Sacar una entrada del sitio</h3>
+  <ul>
+    <li><b>Temporalmente:</b> dentro de la entrada, cambia Visibilidad a <b>Oculto</b>. Desaparece del sitio pero queda guardada.</li>
+    <li><b>Para siempre:</b> dentro de la entrada, al final, está la opción de eliminar. Piensa dos veces: no se puede recuperar.</li>
+  </ul>
+
+  <h3>Cuántas tarjetas se muestran en el Inicio</h3>
+  <p>Las secciones «Prensa y medios» y «Artículos» del Inicio muestran las últimas entradas de cada blog (por defecto, 3). Para cambiar cuántas: editor → Inicio → clic en la sección → campo <b>Cuántas mostrar</b>. Ahí también puedes activar o desactivar que se muestre la fecha.</p>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c9">
+  <h2>9. Crear una página nueva desde cero</h2>
+  <p class="sub">Una página de aterrizaje para una feria, una página por cultivo, lo que necesites. Son dos partes: crearla y diseñarla.</p>
+
+  <h3>Parte A: crear la página</h3>
+  <ol class="pasos">
+    <li>Ve a <span class="ruta">Tienda online → Páginas</span> y toca <b>Añadir página</b>.</li>
+    <li>Escribe el <b>título</b> (será el nombre de la página y parte de su dirección web).</li>
+    <li>El campo <b>Contenido</b> puedes dejarlo vacío: el diseño lo armarás con secciones en el paso siguiente.</li>
+    <li>En <b>Visibilidad</b> déjala en <b>Oculto</b> mientras la construyes (así nadie la ve a medias).</li>
+    <li>En <b>Plantilla</b> deja «Página predeterminada».</li>
+    <li>Guarda.</li>
+  </ol>
+
+  <h3>Parte B: diseñarla con secciones</h3>
+  <ol class="pasos">
+    <li>Entra al editor (<span class="ruta">Tienda online → <b>Editar tema</b></span>).</li>
+    <li>En el selector de arriba elige <b>Páginas</b> y busca tu página nueva.</li>
+    <li>Toca <b>⊕ Agregar sección</b>, escribe <b>pewman</b> y arma la página pieza por pieza. Una receta que funciona casi siempre:
+      <ul>
+        <li><b>Pewman · Hero de página</b> como encabezado (título grande, con o sin foto de fondo).</li>
+        <li><b>Pewman · Imagen + texto</b> para contar lo principal (una o varias, alternando la imagen a izquierda y derecha).</li>
+        <li><b>Pewman · Preguntas</b> si hay dudas típicas que responder.</li>
+        <li><b>Pewman · Banda CTA</b> al final, con botón a WhatsApp o Contacto.</li>
+      </ul>
+    </li>
+    <li>Guarda.</li>
+    <li>Cuando esté lista: vuelve a <span class="ruta">Tienda online → Páginas</span>, abre la página y cambia Visibilidad a <b>Visible</b>.</li>
+    <li>Si corresponde, agrégala al menú del sitio (capítulo 12).</li>
+  </ol>
+
+  <div class="nota"><b>Título y dirección web</b>Si la página se llama «Cultivos de cerezo», su dirección será pewmaninnovation.net/pages/cultivos-de-cerezo. Puedes ajustar esa dirección al final de la ficha de la página, en «Publicación en motores de búsqueda» → Editar.</div>
+  <div class="ojo"><b>Una plantilla por página cuando el diseño es distinto</b>Si en el editor eliges tu página nueva y ves que comparte plantilla con otra («Se ha asignado a 2 páginas»), los cambios de diseño afectarían a ambas. Para darle diseño propio: en la ficha de la página (Tienda online → Páginas), en el panel <b>Plantilla</b>, crea una plantilla nueva. Si ese paso te complica, pide apoyo la primera vez.</div>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c10">
+  <h2>10. Recetas rápidas por sección</h2>
+  <p class="sub">Los cambios más pedidos, uno por uno. Todos parten igual: editor → elegir la página → clic en la sección.</p>
+
+  <h3>El carrusel del Inicio (hero)</h3>
+  <p>Sección <b>Pewman · Hero carrusel</b> en la Página de inicio. Cada lámina es un bloque <b>Slide</b> con: foto de fondo, titular, texto, color del recuadro y hasta dos botones.</p>
+  <ul>
+    <li><b>Cambiar una foto o texto:</b> abre la sección → clic en el slide → edita.</li>
+    <li><b>Agregar un slide:</b> ⊕ Agregar bloque → Slide. <b>Quitar:</b> Eliminar bloque.</li>
+    <li><b>Velocidad:</b> en el panel de la sección puedes prender o apagar el paso automático y elegir cada cuántos segundos avanza.</li>
+  </ul>
+
+  <h3>Los encabezados de las demás páginas</h3>
+  <p>Cada página interior parte con <b>Pewman · Hero de página</b>: título, texto, foto de fondo opcional, color del recuadro y la miga de pan (Inicio › Nosotros). Todo editable en el panel de la sección.</p>
+
+  <h3 id="c10-contador">Los contadores del Inicio (+5000 hectáreas...)</h3>
+  <p>Sección <b>Pewman · Estadísticas</b>. Cada número es un bloque con: valor (solo el número), prefijo (+), sufijo (%) y descripción. Cambia el valor y guarda; la animación de conteo es automática.</p>
+
+  <h3 id="c10-prueba">Casos de éxito, testimonios y ensayos</h3>
+  <ul>
+    <li><b>Carrusel de casos (Inicio):</b> sección Pewman · Casos de éxito; cada cultivo es un bloque con foto, etiqueta y enlace.</li>
+    <li><b>Testimonios en video (Casos):</b> sección Pewman · Testimonios; cada testimonio es un bloque con el video y los datos del productor.</li>
+    <li><b>Ensayos documentados (Casos):</b> sección Pewman · Ensayos; está agrupada por categorías y cada ensayo es un bloque con foto, cultivo, ubicación, descripción y su informe PDF opcional (el enlace del PDF se obtiene como explica el capítulo 11).</li>
+  </ul>
+
+  <h3>Papers y patentes (página Patentes y papers)</h3>
+  <ul>
+    <li><b>Papers:</b> la sección puede leer el blog «Artículos y papers» automáticamente (recomendado: publicas en el blog y aparece solo), o mostrar tarjetas fijas por bloque. Cada tarjeta fija acepta un <b>enlace al paper</b> (DOI, revista o PDF): si lo cargas, la tarjeta se vuelve clickeable.</li>
+    <li><b>Patentes:</b> cada patente es un bloque con jurisdicción, número de registro, descripción y país (define la banderita).</li>
+  </ul>
+
+  <h3>Sostenibilidad (página Nosotros)</h3>
+  <p>Sección <b>Pewman · Sostenibilidad</b>. Tiene varias partes, todas editables:</p>
+  <ul>
+    <li><b>Pilares:</b> cada pilar es un bloque con ícono, cifra opcional, título y texto. Además del set de íconos incluido, cada pilar acepta una <b>imagen propia como ícono</b>: útil para logos de los ODS u otros sellos.</li>
+    <li><b>Documentos descargables:</b> cada documento es un bloque con título, enlace al PDF y una línea de detalle («PDF · 26 págs»).</li>
+    <li><b>Banner y política:</b> campos de la sección (foto, títulos y el párrafo largo).</li>
+  </ul>
+
+  <h3>Piezas para armar páginas: Imagen + texto, Preguntas, Banda CTA</h3>
+  <ul>
+    <li><b>Pewman · Imagen + texto:</b> la pieza más versátil. Foto a un lado, texto al otro, botón opcional. Elige el lado de la imagen, el fondo crema y los espacios. En celular la imagen siempre queda arriba.</li>
+    <li><b>Pewman · Preguntas:</b> preguntas frecuentes en acordeón. Cada pregunta es un bloque (pregunta + respuesta). Además ayuda a que Google muestre el sitio con preguntas destacadas.</li>
+    <li><b>Pewman · Banda CTA:</b> franja de cierre con título, texto y hasta dos botones. Acepta foto de fondo y un control para oscurecerla más o menos (si el texto no se lee, sube el oscurecido).</li>
+    <li><b>Pewman · Texto (prosa):</b> un bloque de texto con formato, para párrafos largos.</li>
+    <li><b>Pewman · Banner imagen:</b> una imagen ancha, opcionalmente clickeable (como el banner azul «Origen chileno, alcance global» del Inicio).</li>
+  </ul>
+
+  <h3>El banner de CALS (distribuidor)</h3>
+  <p>Sección <b>Pewman · Banner CALS</b> en el Inicio. Cada zona del país es un bloque con sus sucursales y su enlace. En el panel de la sección hay un interruptor para que el banner <b>pida los datos del visitante antes de derivarlo a CALS</b> (recomendado: los contactos quedan registrados) o lo lleve directo.</p>
+
+  <h3 id="c10-guia">La guía descargable de cada producto</h3>
+  <p>En las páginas de producto, sección <b>Pewman · Guía gated</b>: el visitante deja sus datos y descarga la guía de aplicación.</p>
+  <ul>
+    <li><b>La portada que se ve:</b> campo «Imagen de portada» en el panel de la sección (sube la portada real del PDF, en vertical).</li>
+    <li><b>El PDF que se descarga:</b> vive en la ficha del producto, campo «PDF guía de aplicación» (capítulo 13). Para actualizar la guía: sube el PDF nuevo ahí y cambia también la portada si corresponde.</li>
+  </ul>
+
+  <h3>Mecanismos de acción (páginas de producto)</h3>
+  <p>Sección <b>Pewman · Mecanismo</b>: hasta 3 pasos (Biológico, Físico, Sistémico), cada uno con título, descripción y un <b>esquema opcional</b> (imagen). La sección tiene además foto de fondo con controles de encuadre y oscurecido.</p>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c11">
+  <h2>11. Fotos y archivos</h2>
+  <p class="sub">Dónde viven las imágenes y los PDF, y cómo obtener el enlace de cualquiera.</p>
+
+  <h3>Subir un archivo</h3>
+  <ol class="pasos">
+    <li>Ve a <span class="ruta">Contenido → Archivos</span>.</li>
+    <li>Toca <b>Subir archivos</b> y elige la foto o el PDF.</li>
+    <li>Cuando termine de subir, aparece en la lista con su fecha y tamaño.</li>
+  </ol>
+
+  <h3>Copiar el enlace de un archivo</h3>
+  <p>En la lista de Archivos, a la derecha de cada archivo hay un <b>ícono de enlace</b>: haz clic y queda copiado. Ese enlace sirve para pegarlo donde una sección pida «URL del PDF» (ensayos, documentos de sostenibilidad, papers).</p>
+
+  <h3>Tamaños recomendados</h3>
+  <table>
+    <tr><th>Uso</th><th>Tamaño ideal</th><th>Formato</th></tr>
+    <tr><td>Fotos de fondo (heros, banners)</td><td>2000 px de ancho o más, horizontal</td><td>JPG</td></tr>
+    <tr><td>Fotos del equipo</td><td>800 × 800 px, cuadrada</td><td>JPG</td></tr>
+    <tr><td>Logos (empresas, premios)</td><td>400 px de ancho o más</td><td>PNG fondo transparente</td></tr>
+    <tr><td>Portadas de guías</td><td>700 × 1000 px, vertical</td><td>PNG o JPG</td></tr>
+    <tr><td>Fotos de casos y tarjetas</td><td>1200 px de ancho</td><td>JPG</td></tr>
+    <tr><td>Esquemas y diagramas</td><td>1200 px de ancho, fondo blanco o transparente</td><td>PNG</td></tr>
+  </table>
+
+  <div class="tip"><b>Nombra bien los archivos antes de subirlos</b>«ensayo-cerezos-curico-2026.pdf» se encuentra en un segundo. «documento1.pdf» no. Usa minúsculas y guiones, sin tildes ni espacios.</div>
+  <div class="ojo"><b>El texto alternativo de las imágenes</b>Al hacer clic en una imagen en Archivos puedes agregarle un «texto alternativo»: una frase que describe la foto. Ayuda al posicionamiento en Google y a las personas que navegan con lector de pantalla. Dos minutos bien invertidos.</div>
+  <div class="stop"><b>No borres archivos que estén en uso</b>La columna <b>Referencias</b> muestra dónde se usa cada archivo. Si borras uno con referencias, en el sitio queda un hueco donde estaba esa imagen. Ante la duda, no borres: los archivos no estorban.</div>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c12">
+  <h2>12. El menú de navegación y el pie de página</h2>
+  <p class="sub">Los enlaces de arriba y de abajo del sitio se administran en un solo lugar.</p>
+
+  <p>Ve a <span class="ruta">Contenido → Menús</span>. Ahí viven:</p>
+  <table>
+    <tr><th>Menú</th><th>Qué controla</th></tr>
+    <tr><td><b>Main menu</b></td><td>El menú superior del sitio: Inicio, Productos, Casos, Nosotros, Prensa y medios, Contacto.</td></tr>
+    <tr><td><b>Pewman Footer Productos</b></td><td>La columna «Productos» del pie de página.</td></tr>
+    <tr><td><b>Pewman Footer Empresa</b></td><td>La columna «Empresa» del pie de página.</td></tr>
+    <tr><td>Footer menu · Customer account main menu</td><td>Menús técnicos de Shopify. No los toques.</td></tr>
+  </table>
+
+  <h3>Agregar un enlace al menú</h3>
+  <ol class="pasos">
+    <li>Entra al menú (por ejemplo, <b>Main menu</b>).</li>
+    <li>Toca <b>Agregar elemento de menú</b>.</li>
+    <li>Escribe el nombre visible y elige el destino: empieza a escribir y Shopify te sugiere páginas, productos y blogs. También puedes pegar una dirección.</li>
+    <li>Arrastra los elementos para ordenarlos. Para crear un submenú (como el de Productos), arrastra un elemento un nivel hacia adentro, debajo de su padre.</li>
+    <li>Toca <b>Guardar menú</b>.</li>
+  </ol>
+  <div class="nota"><b>Quitar o renombrar</b>Cada elemento del menú tiene su lápiz (editar) y su basurero (quitar). Quitar un enlace del menú no borra la página: solo deja de aparecer en el menú.</div>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c13">
+  <h2>13. Productos: precios, stock y fichas</h2>
+  <p class="sub">Cambiar un precio toma menos de un minuto. Crear un producto nuevo, un rato más.</p>
+
+  <h3>Cambiar un precio</h3>
+  <ol class="pasos">
+    <li>Ve a <span class="ruta">Productos</span> y entra al producto.</li>
+    <li>Baja hasta <b>Variantes</b>: ahí están 1 L, 5 L y 20 L.</li>
+    <li>Haz clic en la variante, escribe el precio nuevo y guarda.</li>
+  </ol>
+  <div class="nota"><b>Los precios ya incluyen IVA</b>La tienda está configurada así: si pones $50.000, el cliente paga $50.000 con IVA incluido. No lo sumes aparte.</div>
+
+  <h3>Stock</h3>
+  <p>Hoy los productos se venden sin control de inventario: nunca aparecen agotados. Si en algún momento quieren mostrar «Agotado» o llevar inventario real, eso se activa en la ficha del producto, variante por variante. Pide apoyo la primera vez.</p>
+
+  <h3>La ficha extendida del producto (los campos especiales)</h3>
+  <p>Dentro de cada producto, al final de la ficha, hay una lista de <b>metacampos</b>. Cada uno alimenta una parte de la página del producto:</p>
+  <table>
+    <tr><th>Campo</th><th>Qué aparece en la página</th></tr>
+    <tr><td>Titular del hero</td><td>La frase grande de la portada del producto</td></tr>
+    <tr><td>Imagen del hero</td><td>La foto de fondo de esa portada</td></tr>
+    <tr><td>Copy de la caja de compra</td><td>Los puntos al lado del botón de compra</td></tr>
+    <tr><td>Cultivos compatibles</td><td>La lista de cultivos donde se aplica</td></tr>
+    <tr><td>Certificaciones</td><td>Los sellos (SAG, Ecocert)</td></tr>
+    <tr><td>PDF guía de aplicación</td><td>El archivo que se descarga tras llenar el formulario de la guía</td></tr>
+  </table>
+  <p>Los campos que dejes vacíos simplemente no se muestran y la página se ve bien igual.</p>
+
+  <h3>Crear un producto nuevo</h3>
+  <p>Se hace una sola vez por producto y la página se arma sola con lo que cargues:</p>
+  <ol class="pasos">
+    <li><b>Crear:</b> <span class="ruta">Productos → Agregar producto</span>. Título, descripción, fotos (la primera es la principal).</li>
+    <li><b>Variantes:</b> crea las presentaciones (1 L, 5 L, 20 L) con su precio. En cada una escribe el <b>peso en kilos</b>: es obligatorio para calcular el envío.</li>
+    <li><b>Campos especiales:</b> llena los metacampos de la tabla de arriba (los que tengas).</li>
+    <li><b>Beneficios y mecanismo:</b> estos dos van en el editor visual, no en la ficha. Editor → selector de arriba → Productos → tu producto → llena las secciones <b>Pewman · Beneficios</b> (ícono + texto por beneficio) y <b>Pewman · Mecanismo</b> (hasta 3 pasos). Mientras estén vacías, esas secciones no se muestran y la página no se ve rota.</li>
+    <li><b>Mostrarlo en el Inicio:</b> editor → Página de inicio → sección <b>Pewman · Soluciones</b> → ⊕ Agregar bloque → Tarjeta de producto → elige el producto, sube su logo y escribe sus beneficios resumidos.</li>
+    <li><b>Agregarlo al menú:</b> <span class="ruta">Contenido → Menús</span> → Main menu → Agregar elemento (capítulo 12).</li>
+  </ol>
+  <div class="stop"><b>Nunca borres un producto</b>Si deja de venderse, <b>archívalo</b> (dentro del producto, al final: Archivar). Borrar pierde el historial de ventas y rompe los enlaces que ya circulan. Archivar es reversible; borrar no.</div>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c14">
+  <h2>14. Pedidos: el día a día</h2>
+  <p class="sub">Qué hacer cuando alguien compra.</p>
+  <p>Cuando entra una compra te llega un correo y el pedido aparece en <span class="ruta">Pedidos</span>.</p>
+  <h3>Preparar un envío</h3>
+  <ol class="pasos">
+    <li>Entra al pedido haciendo clic sobre él.</li>
+    <li>Revisa qué compró y la dirección de despacho.</li>
+    <li>Prepara el paquete.</li>
+    <li>Cuando lo despaches, entra otra vez al pedido y toca <b>Preparar pedido</b>.</li>
+    <li>Escribe el número de seguimiento de Blue Express y guarda.</li>
+  </ol>
+  <div class="tip"><b>El correo al cliente es automático</b>Al guardar el número de seguimiento, el cliente recibe un correo con su tracking. No tienes que escribirle tú.</div>
+  <div class="ojo"><b>El formato de 20 litros va aparte</b>El bidón de 20 L no se despacha por courier: se coordina directo con el cliente. Si aparece un pedido con ese formato, contáctalo para acordar la entrega.</div>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c15">
+  <h2>15. Catálogo completo de secciones</h2>
+  <p class="sub">Las 36 piezas «Pewman ·» disponibles en Agregar sección, agrupadas por lo que hacen. Las etiquetas indican qué bloques acepta cada una.</p>
+
+  <h4>Portadas y encabezados</h4>
+  <div class="cat">
+    <div class="c"><h5>Pewman · Hero carrusel</h5><p>El carrusel grande del Inicio. Foto, titular, recuadro de color y botones por lámina.</p><span class="b">agrega y quita: slide</span></div>
+    <div class="c"><h5>Pewman · Hero de página</h5><p>Encabezado de página interior, con o sin foto de fondo y miga de pan.</p><span class="b az">campos propios</span></div>
+    <div class="c"><h5>Pewman · Hero de producto</h5><p>Portada de una página de producto. Toma foto y color desde la ficha del producto.</p><span class="b az">campos propios</span></div>
+  </div>
+
+  <h4>Contenido para armar páginas</h4>
+  <div class="cat">
+    <div class="c"><h5>Pewman · Imagen + texto</h5><p>Foto a un lado, texto al otro, botón opcional. La pieza más versátil.</p><span class="b az">campos propios</span></div>
+    <div class="c"><h5>Pewman · Preguntas</h5><p>Preguntas frecuentes en acordeón.</p><span class="b">agrega y quita: pregunta</span></div>
+    <div class="c"><h5>Pewman · Texto (prosa)</h5><p>Un bloque de texto con formato, sin imagen.</p><span class="b az">campos propios</span></div>
+    <div class="c"><h5>Pewman · Columnas</h5><p>Dos o más tarjetas de título + texto (propósito y visión).</p><span class="b">agrega y quita: tarjeta</span></div>
+    <div class="c"><h5>Pewman · Banner imagen</h5><p>Una imagen ancha, opcionalmente clickeable.</p><span class="b az">campos propios</span></div>
+    <div class="c"><h5>Pewman · Banda CTA</h5><p>Franja de llamado a la acción con hasta dos botones y foto de fondo regulable.</p><span class="b az">campos propios</span></div>
+  </div>
+
+  <h4>Empresa y equipo</h4>
+  <div class="cat">
+    <div class="c"><h5>Pewman · Equipo</h5><p>El equipo por regiones. Cada persona con foto, cargo, título académico y LinkedIn.</p><span class="b">regiones</span><span class="b">integrantes</span></div>
+    <div class="c"><h5>Pewman · Timeline</h5><p>La historia de la empresa por hitos, con foto y chips de países.</p><span class="b">agrega y quita: hito</span></div>
+    <div class="c"><h5>Pewman · Sostenibilidad</h5><p>Banner, política, pilares con ícono (o imagen propia, ideal ODS) y documentos descargables.</p><span class="b">pilares</span><span class="b">documentos</span></div>
+  </div>
+
+  <h4>Prueba social y respaldo</h4>
+  <div class="cat">
+    <div class="c"><h5>Pewman · Premios (Inicio)</h5><p>Texto del reconocimiento + sello destacado + carrusel de logos.</p><span class="b">agrega y quita: logo</span></div>
+    <div class="c"><h5>Pewman · Premios (Nosotros)</h5><p>Premio destacado grande + grilla de logos.</p><span class="b">agrega y quita: logo</span></div>
+    <div class="c"><h5>Pewman · Franja de logos</h5><p>Empresas que confían en nosotros.</p><span class="b">agrega y quita: logo</span></div>
+    <div class="c"><h5>Pewman · Estadísticas</h5><p>Contadores animados (+5000 hectáreas...).</p><span class="b">agrega y quita: estadística</span></div>
+    <div class="c"><h5>Pewman · Casos de éxito</h5><p>Carrusel de casos por cultivo.</p><span class="b">agrega y quita: caso</span></div>
+    <div class="c"><h5>Pewman · Testimonios</h5><p>Testimonios en video de productores.</p><span class="b">agrega y quita: testimonio</span></div>
+    <div class="c"><h5>Pewman · Ensayos</h5><p>Ensayos de campo por categoría, con informe PDF opcional.</p><span class="b">categorías</span><span class="b">ensayos</span></div>
+    <div class="c"><h5>Pewman · Papers</h5><p>Artículos técnicos: lee el blog automáticamente o tarjetas fijas con enlace.</p><span class="b">agrega y quita: paper</span></div>
+    <div class="c"><h5>Pewman · Patentes</h5><p>Patentes por país con número de registro.</p><span class="b">agrega y quita: patente</span></div>
+    <div class="c"><h5>Pewman · Certificaciones</h5><p>Sellos y certificaciones del producto.</p><span class="b">agrega y quita: sello</span></div>
+    <div class="c"><h5>Pewman · Confianza + mapa</h5><p>Mapa de presencia + texto de confianza.</p><span class="b az">campos propios</span></div>
+    <div class="c"><h5>Pewman · Resultados</h5><p>Resultado destacado con foto al lado (temporadas, cifras).</p><span class="b az">campos propios</span></div>
+  </div>
+
+  <h4>Producto</h4>
+  <div class="cat">
+    <div class="c"><h5>Pewman · Beneficios</h5><p>Hasta 6 beneficios con ícono (o imagen propia).</p><span class="b">agrega y quita: beneficio</span></div>
+    <div class="c"><h5>Pewman · Ficha producto</h5><p>La caja de compra: formatos, precio y botón.</p><span class="b az">campos propios</span></div>
+    <div class="c"><h5>Pewman · Mecanismo</h5><p>Los mecanismos de acción, cada uno con su esquema opcional.</p><span class="b">agrega y quita: paso</span></div>
+    <div class="c"><h5>Pewman · Cultivos</h5><p>Listado de cultivos donde se aplica.</p><span class="b az">campos propios</span></div>
+    <div class="c"><h5>Pewman · Soluciones</h5><p>Tarjetas de los productos con sus beneficios (Inicio).</p><span class="b">agrega y quita: tarjeta</span></div>
+    <div class="c"><h5>Pewman · Guía gated</h5><p>Descarga de la guía a cambio de los datos del visitante.</p><span class="b az">campos propios</span></div>
+  </div>
+
+  <h4>Conversión y noticias</h4>
+  <div class="cat">
+    <div class="c"><h5>Pewman · Formulario</h5><p>Formulario de contacto sobre foto de fondo.</p><span class="b az">campos propios</span></div>
+    <div class="c"><h5>Pewman · Contacto full</h5><p>Página de contacto completa: datos + formulario.</p><span class="b az">campos propios</span></div>
+    <div class="c"><h5>Pewman · Banner CALS</h5><p>Banner del distribuidor con selector de zona y formulario opcional.</p><span class="b">agrega y quita: zona</span></div>
+    <div class="c"><h5>Pewman · Noticias blog</h5><p>Últimas entradas de un blog, con fecha opcional.</p><span class="b az">campos propios</span></div>
+    <div class="c"><h5>Pewman · Prensa (home)</h5><p>Grilla de noticias cargadas a mano (alternativa al blog).</p><span class="b">agrega y quita: noticia</span></div>
+    <div class="c"><h5>Pewman · Lista de blog</h5><p>El listado completo de un blog (página Prensa y medios).</p><span class="b az">campos propios</span></div>
+    <div class="c"><h5>Pewman · Artículo</h5><p>El cuerpo de una nota del blog.</p><span class="b az">campos propios</span></div>
+    <div class="c"><h5>Pewman · Términos</h5><p>Texto legal por capítulos.</p><span class="b">agrega y quita: sección legal</span></div>
+  </div>
+  <div class="nota"><b>Header y Footer</b>El encabezado del sitio (menú superior) y el pie de página también son secciones (Pewman · Header y Pewman · Footer), pero fijas: están en todas las páginas y no se agregan ni se quitan. Sus textos y enlaces se editan haciendo clic en ellas dentro del editor, y sus menús en Contenido → Menús.</div>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c16">
+  <h2>16. Reglas de oro y qué no tocar</h2>
+  <p class="sub">Siete costumbres que evitan casi todos los problemas.</p>
+  <table>
+    <tr><th>Regla</th><th>Por qué</th></tr>
+    <tr><td><b>Revisa en celular antes de guardar</b></td><td>La mayoría entra desde el teléfono. Lo que se ve bien en el computador puede verse mal ahí.</td></tr>
+    <tr><td><b>Oculta en vez de borrar</b></td><td>Ocultar se deshace con un clic (el ojito). Borrar obliga a rearmar todo.</td></tr>
+    <tr><td><b>Un cambio a la vez</b></td><td>Si tocas diez cosas y algo queda raro, no sabes cuál fue. Cambia, mira, guarda.</td></tr>
+    <tr><td><b>Archiva productos, no los borres</b></td><td>Borrar pierde el historial de ventas y rompe enlaces que ya circulan.</td></tr>
+    <tr><td><b>Nombra bien fotos y PDF</b></td><td>«crioprotect-cerezos.jpg» se encuentra. «IMG_4821.jpg» no.</td></tr>
+    <tr><td><b>Los cambios grandes, en una copia del tema</b></td><td>Duplicar, editar la copia, publicar. El sitio en vivo nunca queda a medias (capítulo 3).</td></tr>
+    <tr><td><b>Guarda seguido</b></td><td>Si cierras la pestaña sin guardar, pierdes lo que hiciste desde el último guardado.</td></tr>
+  </table>
+
+  <h3>Lo que conviene no tocar sin avisar</h3>
+  <ul>
+    <li><b>Configuración → Pagos:</b> si se desconecta, la tienda deja de cobrar.</li>
+    <li><b>Configuración → Envíos:</b> las zonas y tarifas están calculadas con los valores reales del courier. Un cambio mal hecho puede dejarte cobrando de menos.</li>
+    <li><b>Configuración → Dominios:</b> ahí vive la dirección del sitio. Tocarla puede dejar el sitio caído.</li>
+    <li><b>Editar código</b> (en el menú ··· del tema o de una sección): no hay ninguna razón del día a día para entrar ahí.</li>
+    <li><b>Contenido → Metaobjetos:</b> son estructuras internas de las fichas de producto. Se editan desde el producto, no desde ahí.</li>
+    <li><b>Apps instaladas:</b> no desinstales ninguna. Los formularios del sitio dependen de la integración con el sistema de contactos.</li>
+    <li><b>Los menús «Footer menu» y «Customer account main menu»:</b> son técnicos de Shopify.</li>
+    <li><b>Eliminar temas de la lista:</b> los temas en borrador con fecha en el nombre son respaldos y versiones de trabajo.</li>
+  </ul>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c17">
+  <h2>17. Si algo sale mal</h2>
+  <p class="sub">Casi todo tiene arreglo simple. Busca tu caso.</p>
+
+  <h3>«Cambié algo y quedó feo»</h3>
+  <ul>
+    <li>Si todavía no guardaste: usa la flecha <b>deshacer</b> (arriba a la derecha) o cierra la pestaña sin guardar.</li>
+    <li>Si ya guardaste: vuelve a entrar y corrige a mano, o pide apoyo para restaurar una versión anterior del tema.</li>
+  </ul>
+
+  <h3>«No veo mi cambio en el sitio»</h3>
+  <ol class="pasos">
+    <li>Confirma que tocaste <b>Guardar</b> en el editor.</li>
+    <li>Recarga el sitio con <kbd>⌘ Shift R</kbd> (Mac) o <kbd>Ctrl Shift R</kbd> (Windows): fuerza la recarga sin memoria del navegador.</li>
+    <li>Si sigue igual, espera 2 o 3 minutos: el sitio guarda copias temporales que se renuevan solas.</li>
+    <li>Confirma que editaste el tema <b>Activo</b> y no una copia en borrador (mira la etiqueta en la barra del editor).</li>
+  </ol>
+
+  <h3>«Borré una sección sin querer»</h3>
+  <p>Si no has guardado: deshacer (flecha arriba a la derecha) y listo. Si guardaste: la sección hay que rearmarla, pero el capítulo 15 te dice qué sección era y sus campos, y las fotos siguen en Contenido → Archivos. Para la próxima: ocultar en vez de borrar.</p>
+
+  <h3>«Subí una foto y se ve cortada»</h3>
+  <p>Las fotos se recortan automáticamente para calzar en su espacio. Soluciones:</p>
+  <ul>
+    <li>Usa el tamaño recomendado para ese uso (tabla del capítulo 11).</li>
+    <li>Varias secciones tienen un control de <b>encuadre</b> para mover el foco de la foto hacia arriba o abajo.</li>
+    <li>Fondos anchos piden fotos horizontales; personas, fotos cuadradas; portadas de guía, verticales.</li>
+  </ul>
+
+  <h3>«El texto quedó con un formato raro»</h3>
+  <p>Suele pasar al pegar texto desde Word. Pega sin formato: <kbd>⌘ Shift V</kbd> (Mac) o <kbd>Ctrl Shift V</kbd> (Windows), y aplica negritas desde la barra del editor.</p>
+
+  <h3>«No encuentro una sección en Agregar sección»</h3>
+  <ul>
+    <li>Escribe <b>pewman</b> en el buscador del panel: aparecen todas.</li>
+    <li>Revisa que estés en la pestaña <b>Secciones</b> (no en Apps).</li>
+    <li>Hay dos secciones llamadas «Pewman · Premios» (la del Inicio y la de Nosotros). Pasa el mouse para ver la vista previa y distinguirlas.</li>
+  </ul>
+
+  <h3>«Estoy editando otra página sin darme cuenta»</h3>
+  <p>Mira el selector de arriba al centro: dice exactamente qué página estás editando. Los cambios de una plantilla compartida afectan a todas las páginas que la usan (capítulo 9).</p>
+
+  <h3>«Alguien llenó un formulario y no me llegó»</h3>
+  <p>Los formularios dejan cada contacto registrado en el sistema de contactos de la empresa. Revisa también la carpeta de spam del correo. Si no aparece en ninguna parte, avisa: puede ser un problema de configuración.</p>
+
+  <h3>«El sitio está caído» o algo dejó de funcionar solo</h3>
+  <p>No intentes arreglarlo a la fuerza. Si el problema es de pagos, envíos, dominio o algo que nadie tocó, avisa al soporte técnico de confianza y se revisa. Anota qué estabas haciendo cuando pasó: acelera el diagnóstico.</p>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c18">
+  <h2>18. Preguntas frecuentes</h2>
+  <p class="sub">Las dudas que aparecen en los primeros meses.</p>
+
+  <h3>¿Puedo romper el sitio por hacer clic donde no era?</h3>
+  <p>Es difícil. Mientras no toques Guardar, nada cambia. Y las zonas realmente delicadas (pagos, envíos, dominio, código) están listadas en el capítulo 16: si no entras ahí, el resto es terreno seguro.</p>
+
+  <h3>¿Los cambios se publican solos?</h3>
+  <p>En el editor del tema activo: sí, al tocar <b>Guardar</b> quedan en vivo. En el blog y las páginas: al ponerlas en <b>Visible</b>. Nada se publica sin que tú lo confirmes con uno de esos dos gestos.</p>
+
+  <h3>¿Cuántas personas pueden administrar el sitio?</h3>
+  <p>Las que quieran: cada una debe tener su propio usuario de Shopify (Configuración → Usuarios). No compartan una misma clave.</p>
+
+  <h3>¿Puedo programar una noticia para que salga en una fecha?</h3>
+  <p>Sí. En la entrada del blog, en Visibilidad, toca el lápiz de la fecha y elige un día futuro: se publica sola ese día.</p>
+
+  <h3>¿Cómo agrego un video?</h3>
+  <p>La sección de testimonios acepta videos directamente. Para videos en otras partes, lo más simple es subirlos a YouTube y pegar el enlace donde la sección lo permita, o pedir apoyo para incrustarlo.</p>
+
+  <h3>¿El sitio funciona en inglés?</h3>
+  <p>Hoy el sitio es en español. Traducirlo es un proyecto aparte (Shopify lo soporta), no un ajuste del día a día.</p>
+
+  <h3>¿Dónde veo cuánta gente visita el sitio?</h3>
+  <p>En <span class="ruta">Informes y estadísticas</span> del panel: visitas, ventas, productos más vistos y de dónde llega la gente.</p>
+
+  <h3>¿Qué pasa si dos personas editan al mismo tiempo?</h3>
+  <p>Gana el último que guarda, y puede pisar al otro sin aviso. Coordinen: una persona a la vez en el editor.</p>
+
+  <h3>¿Cada cuánto conviene revisar el sitio?</h3>
+  <p>Una vuelta rápida al mes: probar el formulario, mirar la página en celular, revisar que los precios estén al día y que las noticias nuevas estén cargadas.</p>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+<section class="cap" id="c19">
+  <h2>19. Glosario</h2>
+  <p class="sub">Los términos de Shopify traducidos a idioma normal.</p>
+  <div class="glos">
+    <div><b>Panel (admin)</b><span>La pantalla de administración en admin.shopify.com. Desde ahí se maneja todo.</span></div>
+    <div><b>Editor del tema</b><span>La herramienta visual para cambiar el sitio (botón «Editar tema»). En algunos textos de ayuda aparece como «Personalizador».</span></div>
+    <div><b>Tema</b><span>El diseño completo del sitio. El activo es el que ve la gente; los borradores son copias de trabajo.</span></div>
+    <div><b>Plantilla</b><span>El diseño que usa una página. Varias páginas pueden compartir plantilla; los productos usan la suya.</span></div>
+    <div><b>Sección</b><span>Bloque grande de una página. Se agrega, se mueve, se oculta y se borra.</span></div>
+    <div><b>Bloque</b><span>Elemento repetible dentro de una sección: persona, logo, slide, pregunta.</span></div>
+    <div><b>Metacampos</b><span>Los campos extra al final de la ficha de un producto, que alimentan su página.</span></div>
+    <div><b>Variante</b><span>Cada presentación de un producto: 1 L, 5 L, 20 L, con su propio precio y peso.</span></div>
+    <div><b>Entrada de blog</b><span>Una noticia o artículo. Vive en Contenido → Artículos del blog.</span></div>
+    <div><b>Extracto</b><span>El resumen corto de una entrada, visible en las tarjetas de los listados.</span></div>
+    <div><b>Texto alternativo</b><span>Descripción breve de una imagen. Ayuda a Google y a lectores de pantalla.</span></div>
+    <div><b>Visibilidad</b><span>Si una página o entrada está publicada (Visible) o guardada sin publicar (Oculto).</span></div>
+    <div><b>Miga de pan</b><span>La ruta pequeña sobre el título («Inicio › Nosotros») que ayuda a ubicarse.</span></div>
+    <div><b>Hero</b><span>La portada grande de una página, con foto y titular.</span></div>
+    <div><b>CTA</b><span>Llamado a la acción: el botón que invita a hacer algo («Hablar con un asesor»).</span></div>
+    <div><b>Courier</b><span>La empresa de despacho (Blue Express) que lleva los pedidos.</span></div>
+  </div>
+  <a class="arriba" href="#indice">↑ Volver al índice</a>
+</section>
+
+</div>
+
+<footer>
+  Manual del sitio · Pewman Innovation · versión 2 · agosto 2026<br>
+  Instrucciones verificadas contra el panel real de Shopify. Si Shopify cambia su interfaz, el buscador del panel (<b>⌘ K</b>) siempre encuentra las opciones por nombre.
+</footer>
+
+<script>
+(function(){
+  var q = document.getElementById('q');
+  if(!q) return;
+  var caps = Array.prototype.slice.call(document.querySelectorAll('section.cap'));
+  q.addEventListener('input', function(){
+    var t = q.value.trim().toLowerCase();
+    caps.forEach(function(c){
+      if(!t){ c.style.display=''; return; }
+      c.style.display = c.textContent.toLowerCase().indexOf(t) !== -1 ? '' : 'none';
+    });
+  });
+})();
+</script>
+</body>
+</html>
