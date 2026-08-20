@@ -164,7 +164,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
   <div class="marca">Pewman Innovation</div>
   <h1>Manual del sitio web</h1>
   <p>Todo lo que necesitas para administrar la página por tu cuenta: textos, fotos, secciones, equipo, blog y más. Escrito para partir de cero: no hace falta saber nada de tecnología.</p>
-  <div class="ver">Versión 2 · Agosto 2026 · Revisado contra la pantalla real de Shopify</div>
+  <div class="ver">Versión 3 · Agosto 2026 · Verificado contra el panel real de Shopify y la documentación oficial</div>
 </div>
 
 <div class="buscador">
@@ -390,6 +390,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
   </ol>
   <div class="stop"><b>Cuidado al publicar una copia antigua</b>Al publicar un borrador, se publica TODO tal como está en ese borrador. Si después de crear la copia alguien siguió editando el tema activo (textos, personas, noticias destacadas), esos cambios no están en la copia y se pierden de la vista al publicarla. Regla simple: crea la copia, haz el cambio y publícala pronto. No dejes borradores viejos dando vueltas.</div>
 
+  <div class="stop"><b>Hoy el sitio no tiene ningún respaldo</b>Existe un solo tema, el que está en vivo. Si algo se rompe, no hay una copia a la que volver. Conviene dejar una: entra a <b>Tienda online</b>, en el tema activo toca <b>···</b> → <b>Duplicar</b>, y a la copia ponle un nombre con la fecha (por ejemplo «Respaldo 20 ago 2026»). Esa copia queda guardada en <b>Temas en borrador</b> y no afecta al sitio. Repite el respaldo antes de cada cambio grande.</div>
   <div class="nota"><b>El menú ··· del tema</b>Ahí también están <b>Ver</b> (vista previa sin editar), <b>Cambiar nombre</b> (útil para ponerle fecha a las copias, por ejemplo «Pewman - prueba equipo 25 ago») y <b>Descargar archivo del tema</b> (respaldo). Las opciones <b>Editar código</b> y <b>Editar contenido predeterminado</b> no las uses.</div>
   <a class="arriba" href="#indice">↑ Volver al índice</a>
 </section>
@@ -545,21 +546,21 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 
 <section class="cap" id="c7">
   <h2>7. Logos, premios y certificaciones</h2>
-  <p class="sub">Cuatro lugares del sitio muestran logos. Todos funcionan con la misma lógica de bloques.</p>
+  <p class="sub">Cuatro lugares del sitio muestran logos. Tres se administran con bloques de la sección. Las certificaciones de los productos son la excepción y van por otro camino.</p>
 
   <table>
     <tr><th>Qué</th><th>Dónde está</th><th>Sección</th></tr>
     <tr><td>Empresas que confían</td><td>Inicio</td><td>Pewman · Franja de logos</td></tr>
     <tr><td>Premios (carrusel con destacado)</td><td>Inicio</td><td>Pewman · Premios</td></tr>
     <tr><td>Premios y respaldo (con premio destacado grande)</td><td>Nosotros</td><td>Pewman · Premios</td></tr>
-    <tr><td>Certificaciones (SAG, Ecocert)</td><td>Páginas de producto</td><td>Pewman · Certificaciones</td></tr>
+    <tr><td>Certificaciones (SAG, Ecocert)</td><td>Páginas de producto</td><td>Ficha del producto → campo <b>Certificaciones</b> (no la sección)</td></tr>
   </table>
 
-  <h3>Agregar o quitar un logo (sirve para los cuatro casos)</h3>
+  <h3>Agregar o quitar un logo (empresas y premios)</h3>
   <ol class="pasos">
     <li>Entra al editor y elige la página (Inicio, Nosotros o el producto).</li>
     <li>Abre la sección correspondiente con su flechita. Verás un bloque por cada logo.</li>
-    <li>Para agregar: <b>⊕ Agregar bloque → Logo</b>, sube la imagen y escribe el <b>texto alternativo</b> (el nombre de la empresa o premio).</li>
+    <li>Para agregar: <b>⊕ Agregar bloque</b> y elige el bloque de logo. En «Franja de logos» y en los premios de Nosotros se llama <b>Logo</b>; en los premios del Inicio se llama <b>Logo de premio</b>. Sube la imagen y escribe el <b>texto alternativo</b> (el nombre de la empresa o premio).</li>
     <li>Para quitar: clic en el logo → <b>Eliminar bloque</b>.</li>
     <li>Para reordenar: arrastra los bloques.</li>
     <li>Guarda.</li>
@@ -574,6 +575,14 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
   <p>Haz clic en la sección (no en un logo) y edita esos campos directamente.</p>
 
   <div class="tip"><b>Formato ideal de los logos</b>PNG con fondo transparente o blanco, de al menos 400 px de ancho. Los logos con fondos de colores distintos se ven desordenados en la franja.</div>
+
+  <h3>Las certificaciones del producto (SAG, Ecocert) van aparte</h3>
+  <p>Los sellos que se ven en las páginas de Crioprotect y Nanoforte <b>no se editan con bloques</b>. Salen del campo <b>Certificaciones</b> de la ficha del producto, que apunta a fichas guardadas en Contenido → Metaobjetos.</p>
+  <ul>
+    <li><b>Para que un producto muestre otro sello:</b> entra al producto (Productos → Crioprotect o Nanoforte), baja al campo <b>Certificaciones</b> y agrega o quita el que corresponda.</li>
+    <li><b>Para cambiar la imagen de un sello:</b> ve a <span class="ruta">Contenido → Metaobjetos</span>, abre la certificación y cambia su logo. Ojo: el cambio se aplica a todos los productos que usen ese sello.</li>
+  </ul>
+  <div class="ojo"><b>Por qué los bloques de esa sección no hacen nada</b>La sección «Pewman · Certificaciones» tiene bloques llamados «Certificación (respaldo)», pero el sitio solo los muestra cuando el producto no tiene ninguna certificación en su ficha. Hoy los dos productos sí la tienen, así que agregar bloques ahí no cambia nada en la página. Es normal: el respaldo está para que la sección nunca quede vacía.</div>
   <a class="arriba" href="#indice">↑ Volver al índice</a>
 </section>
 
@@ -581,7 +590,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
   <h2>8. Blog: publicar noticias y artículos</h2>
   <p class="sub">Esto no pasa por el editor visual: se publica desde el panel y aparece solo en el sitio.</p>
 
-  <p>El sitio tiene <b>dos blogs</b> y cada uno alimenta partes distintas:</p>
+  <p>El sitio usa <b>dos blogs</b>, y cada uno alimenta partes distintas:</p>
   <table>
     <tr><th>Blog</th><th>Dónde aparece</th><th>Para qué</th></tr>
     <tr><td><b>Prensa y medios</b></td><td>Página Prensa y medios + tarjetas «Prensa» del Inicio</td><td>Apariciones en medios, hitos, eventos</td></tr>
@@ -600,6 +609,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
     <li>En <b>Visibilidad</b> elige <b>Visible</b> y guarda. Listo: aparece solo en el sitio.</li>
   </ol>
   <div class="tip"><b>Para escribirlo con calma</b>Déjalo en <b>Oculto</b> mientras lo redactas. Cuando esté listo, lo cambias a Visible y recién ahí sale al sitio.</div>
+  <div class="ojo"><b>En la lista de blogs aparece un tercero: «News»</b>Es un blog vacío que Shopify crea solo en todas las tiendas nuevas. El sitio de Pewman no lo usa: si publicas una entrada ahí, <b>no va a aparecer en ninguna parte de la página</b>. Elige siempre «Prensa y medios» o «Artículos y papers».</div>
 
   <figure class="shot"><img src="img/07-articulos-lista.jpg" alt="Lista de artículos del blog" loading="lazy"><figcaption>Contenido → Artículos del blog: el botón <b>Agregar artículo del blog</b> crea una entrada nueva.</figcaption></figure>
   <h3 id="c8-fecha">La fecha de la entrada (importa mucho)</h3>
@@ -623,7 +633,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
   </ul>
 
   <h3>Cuántas tarjetas se muestran en el Inicio</h3>
-  <p>Las secciones «Prensa y medios» y «Artículos» del Inicio muestran las últimas entradas de cada blog (por defecto, 3). Para cambiar cuántas: editor → Inicio → clic en la sección → campo <b>Cuántas mostrar</b>. Ahí también puedes activar o desactivar que se muestre la fecha.</p>
+  <p>En la lista del editor, el Inicio tiene <b>dos secciones que se llaman igual</b>: «Pewman · Noticias blog». Una alimenta las tarjetas de Prensa y la otra las de Artículos. Para saber en cuál estás, haz clic en ella y mira el campo <b>Blog del que se muestran las entradas</b>: dirá «Prensa y medios» o «Artículos y papers». Para cambiar cuántas tarjetas se ven (por defecto, 3) usa el campo <b>Cuántas mostrar</b>. Ahí mismo activas o desactivas que se muestre la fecha.</p>
   <a class="arriba" href="#indice">↑ Volver al índice</a>
 </section>
 
@@ -660,7 +670,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
   </ol>
 
   <div class="nota"><b>Título y dirección web</b>Si la página se llama «Cultivos de cerezo», su dirección será pewmaninnovation.net/pages/cultivos-de-cerezo. Puedes ajustar esa dirección al final de la ficha de la página, en «Publicación en motores de búsqueda» → Editar.</div>
-  <div class="ojo"><b>Una plantilla por página cuando el diseño es distinto</b>Si en el editor eliges tu página nueva y ves que comparte plantilla con otra («Se ha asignado a 2 páginas»), los cambios de diseño afectarían a ambas. Para darle diseño propio: en la ficha de la página (Tienda online → Páginas), en el panel <b>Plantilla</b>, crea una plantilla nueva. Si ese paso te complica, pide apoyo la primera vez.</div>
+  <div class="ojo"><b>Una plantilla por página cuando el diseño es distinto</b>Si en el editor eliges tu página nueva y ves que comparte plantilla con otra («Se ha asignado a 2 páginas»), los cambios de diseño afectarían a ambas. Para darle diseño propio, la plantilla se crea <b>desde el editor de temas</b>, no desde la ficha de la página: abre el selector de arriba, entra a <b>Páginas</b>, baja hasta el final de la lista y toca <b>⊕ Crear plantilla</b>. Le pones un nombre y eliges desde cuál plantilla partir. Después vuelves a la ficha de la página (Tienda online → Páginas) y, en el panel <b>Plantilla</b>, seleccionas la que acabas de crear. Si ese paso te complica, pide apoyo la primera vez.</div>
   <a class="arriba" href="#indice">↑ Volver al índice</a>
 </section>
 
@@ -718,12 +728,12 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
   <h3 id="c10-guia">La guía descargable de cada producto</h3>
   <p>En las páginas de producto, sección <b>Pewman · Guía gated</b>: el visitante deja sus datos y descarga la guía de aplicación.</p>
   <ul>
-    <li><b>La portada que se ve:</b> campo «Imagen de portada» en el panel de la sección (sube la portada real del PDF, en vertical).</li>
+    <li><b>La portada que se ve:</b> campo <b>«Portada de la guía (imagen real)»</b>, el primero del panel de la sección (sube la tapa real del PDF, en vertical). Justo debajo hay otro campo parecido, «Fondo de la portada», que es solo el telón decorativo y se usa cuando no cargaste la portada real.</li>
     <li><b>El PDF que se descarga:</b> vive en la ficha del producto, campo «PDF guía de aplicación» (capítulo 13). Para actualizar la guía: sube el PDF nuevo ahí y cambia también la portada si corresponde.</li>
   </ul>
 
   <h3>Mecanismos de acción (páginas de producto)</h3>
-  <p>Sección <b>Pewman · Mecanismo</b>: hasta 3 pasos (Biológico, Físico, Sistémico), cada uno con título, descripción y un <b>esquema opcional</b> (imagen). La sección tiene además foto de fondo con controles de encuadre y oscurecido.</p>
+  <p>Sección <b>Pewman · Triple mecanismo</b>: hasta 3 pasos (Biológico, Físico, Sistémico), cada uno con título, descripción y un <b>esquema opcional</b> (imagen). La sección tiene además foto de fondo con controles de encuadre y oscurecido.</p>
   <a class="arriba" href="#indice">↑ Volver al índice</a>
 </section>
 
@@ -763,6 +773,20 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
   <h2>12. El menú de navegación y el pie de página</h2>
   <p class="sub">Los enlaces de arriba y de abajo del sitio se administran en un solo lugar.</p>
 
+  <h3>Cambiar el logo y el texto de la barra superior</h3>
+  <p>Entra al editor (<span class="ruta">Tienda online → <b>Editar tema</b></span>) y, en la lista de la izquierda, haz clic en <b>Pewman · Header</b>. En el panel derecho están:</p>
+  <ul>
+    <li><b>Logo (versión clara):</b> toca la imagen y sube el archivo nuevo. Usa PNG con fondo transparente, en blanco, porque va sobre fotos.</li>
+    <li><b>Texto de la barra superior:</b> la franja delgada de más arriba («Todas nuestras soluciones son 100% Orgánicas...»). Déjala vacía si quieres esconderla.</li>
+    <li><b>Mostrar ícono de búsqueda:</b> prende o apaga la lupa.</li>
+  </ul>
+  <p>Guarda. El cambio se aplica a todas las páginas del sitio a la vez.</p>
+
+  <h3>Los datos de contacto y las redes del pie de página</h3>
+  <p>En el mismo editor, haz clic en <b>Pewman · Footer</b>. Ahí se editan el <b>logo</b>, la <b>descripción breve</b>, los enlaces de <b>Instagram, Facebook, LinkedIn y YouTube</b>, el <b>texto de WhatsApp</b>, la <b>dirección</b>, el <b>link de Google Maps</b> y el <b>copyright</b>.</p>
+  <div class="tip"><b>Si una red social queda vacía, el ícono desaparece</b>No hace falta borrar nada más: deja el campo en blanco y el pie de página se reacomoda solo.</div>
+
+  <h3>Los enlaces de los menús</h3>
   <p>Ve a <span class="ruta">Contenido → Menús</span>. Ahí viven:</p>
   <table>
     <tr><th>Menú</th><th>Qué controla</th></tr>
@@ -806,6 +830,9 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
     <tr><th>Campo</th><th>Qué aparece en la página</th></tr>
     <tr><td>Titular del hero</td><td>La frase grande de la portada del producto</td></tr>
     <tr><td>Imagen del hero</td><td>La foto de fondo de esa portada</td></tr>
+    <tr><td>Texto del hero</td><td>El párrafo bajo esa frase grande</td></tr>
+    <tr><td>Logo del producto (hero)</td><td>El logo que se ve sobre la foto de portada</td></tr>
+    <tr><td>Color del producto</td><td>El color de acento de toda la página del producto</td></tr>
     <tr><td>Copy de la caja de compra</td><td>Los puntos al lado del botón de compra</td></tr>
     <tr><td>Cultivos compatibles</td><td>La lista de cultivos donde se aplica</td></tr>
     <tr><td>Certificaciones</td><td>Los sellos (SAG, Ecocert)</td></tr>
@@ -819,7 +846,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
     <li><b>Crear:</b> <span class="ruta">Productos → Agregar producto</span>. Título, descripción, fotos (la primera es la principal).</li>
     <li><b>Variantes:</b> crea las presentaciones (1 L, 5 L, 20 L) con su precio. En cada una escribe el <b>peso en kilos</b>: es obligatorio para calcular el envío.</li>
     <li><b>Campos especiales:</b> llena los metacampos de la tabla de arriba (los que tengas).</li>
-    <li><b>Beneficios y mecanismo:</b> estos dos van en el editor visual, no en la ficha. Editor → selector de arriba → Productos → tu producto → llena las secciones <b>Pewman · Beneficios</b> (ícono + texto por beneficio) y <b>Pewman · Mecanismo</b> (hasta 3 pasos). Mientras estén vacías, esas secciones no se muestran y la página no se ve rota.</li>
+    <li><b>Beneficios y mecanismo:</b> estos dos van en el editor visual, no en la ficha. Editor → selector de arriba → Productos → tu producto → llena las secciones <b>Pewman · Beneficios</b> (ícono + texto por beneficio) y <b>Pewman · Triple mecanismo</b> (hasta 3 pasos). Mientras estén vacías, esas secciones no se muestran y la página no se ve rota.</li>
     <li><b>Mostrarlo en el Inicio:</b> editor → Página de inicio → sección <b>Pewman · Soluciones</b> → ⊕ Agregar bloque → Tarjeta de producto → elige el producto, sube su logo y escribe sus beneficios resumidos.</li>
     <li><b>Agregarlo al menú:</b> <span class="ruta">Contenido → Menús</span> → Main menu → Agregar elemento (capítulo 12).</li>
   </ol>
@@ -836,17 +863,18 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
     <li>Entra al pedido haciendo clic sobre él.</li>
     <li>Revisa qué compró y la dirección de despacho.</li>
     <li>Prepara el paquete.</li>
-    <li>Cuando lo despaches, entra otra vez al pedido y toca <b>Preparar pedido</b>.</li>
-    <li>Escribe el número de seguimiento de Blue Express y guarda.</li>
+    <li>Cuando lo despaches, entra otra vez al pedido y toca <b>Marcar como preparado</b>.</li>
+    <li>Escribe el <b>número de seguimiento</b> de Blue Express. Shopify suele reconocer solo la empresa de transporte; si no, elígela en el desplegable de al lado.</li>
+    <li>Deja marcada la casilla <b>Enviar una notificación al cliente</b> y confirma con <b>Marcar como preparado</b>.</li>
   </ol>
-  <div class="tip"><b>El correo al cliente es automático</b>Al guardar el número de seguimiento, el cliente recibe un correo con su tracking. No tienes que escribirle tú.</div>
+  <div class="ojo"><b>Revisa la casilla del correo antes de confirmar</b>El aviso al cliente depende de la casilla <b>Enviar una notificación al cliente</b>. Si queda marcada, el cliente recibe solo su correo con el seguimiento y no tienes que escribirle tú. Si la desmarcas, no le llega nada y va a quedar esperando.</div>
   <div class="ojo"><b>El formato de 20 litros va aparte</b>El bidón de 20 L no se despacha por courier: se coordina directo con el cliente. Si aparece un pedido con ese formato, contáctalo para acordar la entrega.</div>
   <a class="arriba" href="#indice">↑ Volver al índice</a>
 </section>
 
 <section class="cap" id="c15">
   <h2>15. Catálogo completo de secciones</h2>
-  <p class="sub">Las 36 piezas «Pewman ·» disponibles en Agregar sección, agrupadas por lo que hacen. Las etiquetas indican qué bloques acepta cada una.</p>
+  <p class="sub">Las 39 piezas «Pewman ·» que aparecen en Agregar sección, agrupadas por lo que hacen. Las etiquetas indican qué bloques acepta cada una.</p>
 
   <h4>Portadas y encabezados</h4>
   <div class="cat">
@@ -883,7 +911,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
     <div class="c"><h5>Pewman · Ensayos</h5><p>Ensayos de campo por categoría, con informe PDF opcional.</p><span class="b">categorías</span><span class="b">ensayos</span></div>
     <div class="c"><h5>Pewman · Papers</h5><p>Artículos técnicos: lee el blog automáticamente o tarjetas fijas con enlace.</p><span class="b">agrega y quita: paper</span></div>
     <div class="c"><h5>Pewman · Patentes</h5><p>Patentes por país con número de registro.</p><span class="b">agrega y quita: patente</span></div>
-    <div class="c"><h5>Pewman · Certificaciones</h5><p>Sellos y certificaciones del producto.</p><span class="b">agrega y quita: sello</span></div>
+    <div class="c"><h5>Pewman · Certificaciones</h5><p>Sellos del producto. Se controlan desde el campo Certificaciones de la ficha del producto, no con bloques (capítulo 7).</p><span class="b az">desde la ficha</span></div>
     <div class="c"><h5>Pewman · Confianza + mapa</h5><p>Mapa de presencia + texto de confianza.</p><span class="b az">campos propios</span></div>
     <div class="c"><h5>Pewman · Resultados</h5><p>Resultado destacado con foto al lado (temporadas, cifras).</p><span class="b az">campos propios</span></div>
   </div>
@@ -892,7 +920,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
   <div class="cat">
     <div class="c"><h5>Pewman · Beneficios</h5><p>Hasta 6 beneficios con ícono (o imagen propia).</p><span class="b">agrega y quita: beneficio</span></div>
     <div class="c"><h5>Pewman · Ficha producto</h5><p>La caja de compra: formatos, precio y botón.</p><span class="b az">campos propios</span></div>
-    <div class="c"><h5>Pewman · Mecanismo</h5><p>Los mecanismos de acción, cada uno con su esquema opcional.</p><span class="b">agrega y quita: paso</span></div>
+    <div class="c"><h5>Pewman · Triple mecanismo</h5><p>Los mecanismos de acción, cada uno con su esquema opcional.</p><span class="b">agrega y quita: paso</span></div>
     <div class="c"><h5>Pewman · Cultivos</h5><p>Listado de cultivos donde se aplica.</p><span class="b az">campos propios</span></div>
     <div class="c"><h5>Pewman · Soluciones</h5><p>Tarjetas de los productos con sus beneficios (Inicio).</p><span class="b">agrega y quita: tarjeta</span></div>
     <div class="c"><h5>Pewman · Guía gated</h5><p>Descarga de la guía a cambio de los datos del visitante.</p><span class="b az">campos propios</span></div>
@@ -904,7 +932,8 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
     <div class="c"><h5>Pewman · Contacto full</h5><p>Página de contacto completa: datos + formulario.</p><span class="b az">campos propios</span></div>
     <div class="c"><h5>Pewman · Banner CALS</h5><p>Banner del distribuidor con selector de zona y formulario opcional.</p><span class="b">agrega y quita: zona</span></div>
     <div class="c"><h5>Pewman · Noticias blog</h5><p>Últimas entradas de un blog, con fecha opcional.</p><span class="b az">campos propios</span></div>
-    <div class="c"><h5>Pewman · Prensa (home)</h5><p>Grilla de noticias cargadas a mano (alternativa al blog).</p><span class="b">agrega y quita: noticia</span></div>
+    <div class="c"><h5>Pewman · Noticias a mano</h5><p>Grilla de noticias cargadas una por una. <b>No</b> confundir con «Pewman · Noticias blog», que lee las entradas del blog solo.</p><span class="b">agrega y quita: noticia</span></div>
+    <div class="c"><h5>Pewman · Artículos a mano</h5><p>La misma pieza anterior, pero ya configurada para artículos en vez de prensa.</p><span class="b">agrega y quita: noticia</span></div>
     <div class="c"><h5>Pewman · Lista de blog</h5><p>El listado completo de un blog (página Prensa y medios).</p><span class="b az">campos propios</span></div>
     <div class="c"><h5>Pewman · Artículo</h5><p>El cuerpo de una nota del blog.</p><span class="b az">campos propios</span></div>
     <div class="c"><h5>Pewman · Términos</h5><p>Texto legal por capítulos.</p><span class="b">agrega y quita: sección legal</span></div>
@@ -930,13 +959,13 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
   <h3>Lo que conviene no tocar sin avisar</h3>
   <ul>
     <li><b>Configuración → Pagos:</b> si se desconecta, la tienda deja de cobrar.</li>
-    <li><b>Configuración → Envíos:</b> las zonas y tarifas están calculadas con los valores reales del courier. Un cambio mal hecho puede dejarte cobrando de menos.</li>
+    <li><b>Configuración → Envío y entrega:</b> las zonas y tarifas están calculadas con los valores reales del courier. Un cambio mal hecho puede dejarte cobrando de menos.</li>
     <li><b>Configuración → Dominios:</b> ahí vive la dirección del sitio. Tocarla puede dejar el sitio caído.</li>
     <li><b>Editar código</b> (en el menú ··· del tema o de una sección): no hay ninguna razón del día a día para entrar ahí.</li>
     <li><b>Contenido → Metaobjetos:</b> son estructuras internas de las fichas de producto. Se editan desde el producto, no desde ahí.</li>
     <li><b>Apps instaladas:</b> no desinstales ninguna. Los formularios del sitio dependen de la integración con el sistema de contactos.</li>
     <li><b>Los menús «Footer menu» y «Customer account main menu»:</b> son técnicos de Shopify.</li>
-    <li><b>Eliminar temas de la lista:</b> los temas en borrador con fecha en el nombre son respaldos y versiones de trabajo.</li>
+    <li><b>Eliminar temas de la lista:</b> los temas en borrador son respaldos y versiones de trabajo. Borrar uno es definitivo.</li>
   </ul>
   <a class="arriba" href="#indice">↑ Volver al índice</a>
 </section>
@@ -984,7 +1013,13 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
   <p>Mira el selector de arriba al centro: dice exactamente qué página estás editando. Los cambios de una plantilla compartida afectan a todas las páginas que la usan (capítulo 9).</p>
 
   <h3>«Alguien llenó un formulario y no me llegó»</h3>
-  <p>Los formularios dejan cada contacto registrado en el sistema de contactos de la empresa. Revisa también la carpeta de spam del correo. Si no aparece en ninguna parte, avisa: puede ser un problema de configuración.</p>
+  <p>Los formularios del sitio (Contacto, la guía descargable y el banner de CALS) hacen dos cosas a la vez:</p>
+  <ul>
+    <li>Mandan un <b>correo de aviso</b> a la casilla de la tienda. Para ver o cambiar cuál es esa casilla: <span class="ruta">Configuración → Notificaciones</span>.</li>
+    <li>Mandan una <b>copia a HubSpot</b>, el sistema de contactos de la empresa. Ahí queda el registro histórico.</li>
+  </ul>
+  <p>Shopify <b>no</b> guarda una lista de esos envíos dentro del panel. Si el correo no llegó, revisa spam y revisa HubSpot. Si no está en ninguno de los dos, avisa: puede ser un problema de configuración.</p>
+  <div class="tip"><b>Pruébalo una vez al mes</b>Llena tú mismo el formulario de Contacto con un correo de prueba. Es la única forma de saber que la cadena sigue funcionando.</div>
 
   <h3>«El sitio está caído» o algo dejó de funcionar solo</h3>
   <p>No intentes arreglarlo a la fuerza. Si el problema es de pagos, envíos, dominio o algo que nadie tocó, avisa al soporte técnico de confianza y se revisa. Anota qué estabas haciendo cuando pasó: acelera el diagnóstico.</p>
@@ -1002,7 +1037,8 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
   <p>En el editor del tema activo: sí, al tocar <b>Guardar</b> quedan en vivo. En el blog y las páginas: al ponerlas en <b>Visible</b>. Nada se publica sin que tú lo confirmes con uno de esos dos gestos.</p>
 
   <h3>¿Cuántas personas pueden administrar el sitio?</h3>
-  <p>Las que quieran: cada una debe tener su propio usuario de Shopify (Configuración → Usuarios). No compartan una misma clave.</p>
+  <p>Hoy la tienda está en el plan <b>Basic</b> de Shopify, y ese plan <b>no permite crear usuarios adicionales</b>: existe solo la cuenta del dueño. Para que cada persona tenga su propio acceso hay que subir al plan siguiente (Grow, que permite 5 usuarios). Mientras tanto, la sesión se comparte, así que conviene tener la clave guardada en un gestor de contraseñas y no repartirla por WhatsApp.</p>
+  <div class="nota"><b>Excepción útil</b>Las cuentas de <b>colaborador</b> (las que usa una agencia o un desarrollador externo) no ocupan cupo y sí se pueden agregar en cualquier plan, desde Configuración → Usuarios.</div>
 
   <h3>¿Puedo programar una noticia para que salga en una fecha?</h3>
   <p>Sí. En la entrada del blog, en Visibilidad, toca el lápiz de la fecha y elige un día futuro: se publica sola ese día.</p>
@@ -1051,8 +1087,8 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 </div>
 
 <footer>
-  Manual del sitio · Pewman Innovation · versión 2 · agosto 2026<br>
-  Instrucciones verificadas contra el panel real de Shopify. Si Shopify cambia su interfaz, el buscador del panel (<b>⌘ K</b>) siempre encuentra las opciones por nombre.
+  Manual del sitio · Pewman Innovation · versión 3 · agosto 2026<br>
+  Instrucciones verificadas una por una contra el panel real de esta tienda y contra la documentación oficial de Shopify. Si Shopify cambia su interfaz, el buscador del panel (<b>⌘ K</b>) siempre encuentra las opciones por nombre.
 </footer>
 
 <script>
