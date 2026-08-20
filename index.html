@@ -63,7 +63,9 @@ li{margin-bottom:7px}
 .ojo{background:#fff8e6;border-left:4px solid var(--warn)}
 .stop{background:#fdeaee;border-left:4px solid var(--rojo)}
 .tip{background:#eefaf1;border-left:4px solid var(--ok)}
-.nota b,.ojo b,.stop b,.tip b{display:block;margin-bottom:3px}
+/* solo la PRIMERA negrita es el titulo del recuadro; las demas son enfasis
+   dentro del texto y deben quedarse en su linea */
+.nota>b:first-child,.ojo>b:first-child,.stop>b:first-child,.tip>b:first-child{display:block;margin-bottom:3px}
 table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px}
 th,td{border:1px solid var(--linea);padding:10px 13px;text-align:left;vertical-align:top}
 th{background:var(--crema);font-weight:600}
