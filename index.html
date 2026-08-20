@@ -164,12 +164,31 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
   border:1px solid var(--linea);border-radius:14px;box-shadow:0 24px 50px -18px rgba(0,0,0,.3);
   max-height:min(60vh,440px);z-index:20}
 #res-top.on{display:block}
+/* Atajo directo al panel: cada capítulo abre la pantalla exacta de Shopify que
+   explica, en una pestaña nueva. Requiere haber iniciado sesión en el panel. */
+.ir{display:inline-flex;align-items:center;gap:9px;margin:0 0 24px;padding:10px 18px 10px 15px;
+  background:#fff;border:1.5px solid var(--rojo);color:var(--rojo);border-radius:999px;
+  font-size:13.5px;font-weight:700;text-decoration:none;transition:.15s;line-height:1}
+.ir:hover{background:var(--rojo);color:#fff;box-shadow:0 8px 20px -10px rgba(189,0,40,.6)}
+.ir svg{width:16px;height:16px;flex:0 0 auto}
+@media print{.ir{display:none}}
 /* columna de botones flotantes: wsp arriba, volver al índice al medio, buscar abajo.
    Es flex, así que si el de volver está oculto la columna se cierra sola sin dejar hueco. */
-#fabs{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;flex-direction:column;gap:12px}
-#fabs button,#fabs a{width:58px;height:58px;border-radius:50%;cursor:pointer;border:none;
+#fabs{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;flex-direction:column;
+  align-items:flex-end;gap:12px}
+#fabs .fab-c{width:58px;height:58px;border-radius:50%;cursor:pointer;border:none;flex:0 0 auto;
   display:flex;align-items:center;justify-content:center;transition:.15s;text-decoration:none}
-#fabs button:hover,#fabs a:hover{transform:scale(1.07)}
+#fabs .fab-c:hover{transform:scale(1.07)}
+/* Fila del comodin: la etiqueta va a la izquierda del boton verde. */
+.fab-fila{display:flex;align-items:center;gap:10px}
+/* Guino a los comodines de "Quien quiere ser millonario": deja claro, con humor,
+   que WhatsApp es el recurso de emergencia y no el primer paso. */
+#comodin{display:flex;flex-direction:column;align-items:flex-end;gap:1px;text-decoration:none;
+  background:#fff;border:1px solid var(--linea);border-radius:999px;padding:7px 15px;
+  box-shadow:0 8px 22px -10px rgba(0,0,0,.28);white-space:nowrap;transition:.15s}
+#comodin:hover{border-color:#25D366;transform:translateX(-2px)}
+#comodin .c-t{font-size:12.5px;font-weight:800;color:#128C4A;letter-spacing:.02em;line-height:1.15}
+#comodin .c-s{font-size:10.5px;color:var(--gris);line-height:1.15}
 #fabs svg{width:24px;height:24px}
 #fab-arriba{background:#fff;color:var(--tinta);border:1px solid var(--linea)!important;
   box-shadow:0 10px 26px -10px rgba(0,0,0,.32);display:none!important}
@@ -181,7 +200,10 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 @media print{#fabs,#velo,#res-top{display:none!important}}
 @media (max-width:640px){
   #fabs{right:14px;bottom:14px;gap:10px}
-  #fabs button,#fabs a{width:52px;height:52px}
+  #fabs .fab-c{width:52px;height:52px}
+  #comodin{padding:6px 12px}
+  #comodin .c-t{font-size:11.5px}
+  #comodin .c-s{font-size:10px}
   #fab-wsp svg{width:26px;height:26px}
 }
 @media print{
@@ -261,6 +283,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 <section class="cap" id="c1">
   <h2>1. Antes de empezar</h2>
   <p class="sub">Cómo entrar y qué es cada cosa que ves.</p>
+  <a class="ir" href="https://admin.shopify.com/store/8kw6t0-mf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>Abrir el panel de Shopify</a>
 
   <h3>Entrar al panel</h3>
   <ol class="pasos">
@@ -334,6 +357,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 <section class="cap" id="c3">
   <h2>3. El editor visual del sitio</h2>
   <p class="sub">La herramienta principal. Funciona como un editor de arrastrar y soltar: eliges, escribes, mueves y guardas.</p>
+  <a class="ir" href="https://admin.shopify.com/store/8kw6t0-mf/themes/current/editor" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>Abrir el editor del sitio</a>
 
   <h3>Cómo entrar</h3>
   <ol class="pasos">
@@ -444,6 +468,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 <section class="cap" id="c4">
   <h2>4. Secciones: agregar, mover, ocultar, borrar</h2>
   <p class="sub">Las piezas grandes de cada página. Aquí está el corazón del sistema.</p>
+  <a class="ir" href="https://admin.shopify.com/store/8kw6t0-mf/themes/current/editor" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>Abrir el editor del sitio</a>
 
   <h3>Agregar una sección</h3>
   <ol class="pasos">
@@ -509,6 +534,8 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 <section class="cap" id="c5">
   <h2>5. Bloques: los elementos dentro de cada sección</h2>
   <p class="sub">Una persona, un logo, una pregunta, un slide: todos son bloques y todos se manejan igual.</p>
+  <a class="ir" href="https://admin.shopify.com/store/8kw6t0-mf/themes/current/editor" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>Abrir el editor del sitio</a>
+  <figure class="shot"><img width="2000" height="948" src="img/21-logos-bloques.jpg" alt="Panel del editor con la sección Franja de logos abierta mostrando sus bloques" loading="lazy"><figcaption>Así se ve una sección <b>abierta</b> en el panel izquierdo. La flechita <b>›</b> de <b>Pewman · Franja de logos</b> ya está girada hacia abajo: eso significa que la sección está desplegada y debajo aparecen sus bloques. <b>①</b> El primer enlace es <b>⊕ Agregar Logo</b>: en cada sección ese enlace se llama según el tipo de bloque que acepta (Agregar Logo, Agregar Integrante, Agregar Pregunta). <b>②</b> Cada línea indentada es <b>un bloque</b>, y cada uno se edita por separado al hacer clic. Se reordenan arrastrándolos. <b>③</b> El tacho borra la sección entera, no un bloque: para borrar un solo bloque hay que entrar en él. Volverás a ver esta misma pantalla en el <b>capítulo 7</b>, ahí explicada para el caso concreto de los logos.</figcaption></figure>
   <p>Cuando una sección contiene elementos repetibles, en la lista izquierda aparece con una <b>flechita ›</b>. Al abrirla, ves sus bloques y el enlace <b>⊕ Agregar bloque</b>.</p>
   <ol class="pasos">
     <li><b>Agregar:</b> abre la sección con la flechita y toca <b>⊕ Agregar bloque</b>. Si hay más de un tipo de bloque, elige cuál.</li>
@@ -526,6 +553,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 <section class="cap" id="c6">
   <h2>6. El equipo: personas, cargos y regiones</h2>
   <p class="sub">Gente nueva, cambios de cargo, títulos académicos y países nuevos. Todo en la página Nosotros.</p>
+  <a class="ir" href="https://admin.shopify.com/store/8kw6t0-mf/themes/current/editor?previewPath=%2Fpages%2Fempresa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>Abrir el editor en la página Nosotros</a>
 
   <p>El equipo está agrupado por región (Chile, Perú, Europa) y dentro de cada región van las personas. Así se ve en el editor:</p>
 
@@ -593,6 +621,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 <section class="cap" id="c7">
   <h2>7. Logos, premios y certificaciones</h2>
   <p class="sub">Cuatro lugares del sitio muestran logos. Tres se administran con bloques de la sección. Las certificaciones de los productos son la excepción y van por otro camino.</p>
+  <a class="ir" href="https://admin.shopify.com/store/8kw6t0-mf/themes/current/editor" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>Abrir el editor del sitio</a>
 
   <table>
     <tr><th>Qué</th><th>Dónde está</th><th>Sección</th></tr>
@@ -636,6 +665,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 <section class="cap" id="c8">
   <h2>8. Blog: publicar noticias y artículos</h2>
   <p class="sub">Esto no pasa por el editor visual: se publica desde el panel y aparece solo en el sitio.</p>
+  <a class="ir" href="https://admin.shopify.com/store/8kw6t0-mf/content/articles" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>Abrir Artículos del blog</a>
 
   <p>El sitio usa <b>dos blogs</b>, y cada uno alimenta partes distintas:</p>
   <table>
@@ -687,6 +717,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 <section class="cap" id="c9">
   <h2>9. Crear una página nueva desde cero</h2>
   <p class="sub">Una página de aterrizaje para una feria, una página por cultivo, lo que necesites. Son dos partes: crearla y diseñarla.</p>
+  <a class="ir" href="https://admin.shopify.com/store/8kw6t0-mf/pages" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>Abrir Páginas</a>
 
   <h3>Parte A: crear la página</h3>
   <ol class="pasos">
@@ -724,6 +755,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 <section class="cap" id="c10">
   <h2>10. Recetas rápidas por sección</h2>
   <p class="sub">Los cambios más pedidos, uno por uno. Todos parten igual: editor → elegir la página → clic en la sección.</p>
+  <a class="ir" href="https://admin.shopify.com/store/8kw6t0-mf/themes/current/editor" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>Abrir el editor del sitio</a>
 
   <h3>El carrusel del Inicio (hero)</h3>
   <p>Sección <b>Pewman · Hero carrusel</b> en la Página de inicio. Cada lámina es un bloque <b>Slide</b> con: foto de fondo, titular, texto, color del recuadro y hasta dos botones.</p>
@@ -787,6 +819,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 <section class="cap" id="c11">
   <h2>11. Fotos y archivos</h2>
   <p class="sub">Dónde viven las imágenes y los PDF, y cómo obtener el enlace de cualquiera.</p>
+  <a class="ir" href="https://admin.shopify.com/store/8kw6t0-mf/content/files" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>Abrir Archivos</a>
 
   <h3>Subir un archivo</h3>
   <ol class="pasos">
@@ -819,6 +852,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 <section class="cap" id="c12">
   <h2>12. El menú de navegación y el pie de página</h2>
   <p class="sub">Los enlaces de arriba y de abajo del sitio se administran en un solo lugar.</p>
+  <a class="ir" href="https://admin.shopify.com/store/8kw6t0-mf/content/menus" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>Abrir Menús</a>
 
   <h3>Cambiar el logo y el texto de la barra superior</h3>
   <p>Entra al editor (<span class="ruta">Tienda online → <b>Editar tema</b></span>) y, en la lista de la izquierda, haz clic en <b>Pewman · Header</b>. En el panel derecho están:</p>
@@ -859,6 +893,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 <section class="cap" id="c13">
   <h2>13. Productos: precios, stock y fichas</h2>
   <p class="sub">Cambiar un precio toma menos de un minuto. Crear un producto nuevo, un rato más.</p>
+  <a class="ir" href="https://admin.shopify.com/store/8kw6t0-mf/products" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>Abrir Productos</a>
   <figure class="shot"><img width="2000" height="948" src="img/16-productos-lista.jpg" alt="Lista de productos del panel con Crioprotect y Nanoforte" loading="lazy"><figcaption>La lista que ves en <b>Productos</b>. <b>①</b> Haz clic sobre el <b>nombre</b> del producto para abrir su ficha: todo lo demás se edita desde adentro. <b>②</b> La columna <b>Inventario</b> dice «No se hace seguimiento del inventario», que es justamente cómo está configurada la tienda hoy: se vende sin descontar stock, así que nunca va a aparecer «Agotado» solo.</figcaption></figure>
 
   <h3>Cambiar un precio</h3>
@@ -907,6 +942,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 <section class="cap" id="c14">
   <h2>14. Pedidos: el día a día</h2>
   <p class="sub">Qué hacer cuando alguien compra.</p>
+  <a class="ir" href="https://admin.shopify.com/store/8kw6t0-mf/orders" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>Abrir Pedidos</a>
   <p>Cuando entra una compra te llega un correo y el pedido aparece en <span class="ruta">Pedidos</span>.</p>
   <figure class="shot"><img width="2000" height="948" src="img/19-pedidos.jpg" alt="Pantalla de Pedidos del panel, todavía sin ventas registradas" loading="lazy"><figcaption>Así se ve <b>Pedidos</b> hoy: la tienda todavía no registra ventas, por eso sale el mensaje «Los pedidos se mostrarán aquí». <b>①</b> Cuando entre la primera compra va a aparecer en esta misma lista, y se abre haciendo clic sobre ella. <b>②</b> <b>Pedidos abandonados</b> guarda a quienes llegaron al carrito y no alcanzaron a pagar: esa lista vale la pena revisarla seguido, porque son personas que ya mostraron intención de comprar.</figcaption></figure>
   <h3>Preparar un envío</h3>
@@ -926,6 +962,7 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 <section class="cap" id="c15">
   <h2>15. Catálogo completo de secciones</h2>
   <p class="sub">Las 39 piezas «Pewman ·» que aparecen en Agregar sección, agrupadas por lo que hacen. Las etiquetas indican qué bloques acepta cada una.</p>
+  <a class="ir" href="https://admin.shopify.com/store/8kw6t0-mf/themes/current/editor" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>Abrir el editor del sitio</a>
   <figure class="shot"><img width="2000" height="948" src="img/20-catalogo-secciones.jpg" alt="Panel Agregar sección del editor mostrando la lista de secciones Pewman" loading="lazy"><figcaption>El panel que se abre al tocar <b>Agregar sección</b>: aquí viven las piezas que están listadas en este capítulo. <b>①</b> Escribe <b>Pewman</b> en el <b>buscador</b> y la lista se reduce solo a las piezas hechas para este sitio. <b>②</b> Todas empiezan con <b>Pewman ·</b> y están en orden alfabético. Las que <i>no</i> llevan ese prefijo son piezas genéricas que trae el tema: funcionan, pero no están diseñadas con la línea gráfica de Pewman, así que conviene quedarse con las del prefijo.</figcaption></figure>
 
   <h4>Portadas y encabezados</h4>
@@ -1145,13 +1182,16 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 
 
 <div id="fabs">
-  <a id="fab-wsp" href="https://wa.me/56926007409?text=Hola%20Crist%C3%B3bal%2C%20te%20escribo%20desde%20el%20manual%20de%20la%20web%20de%20Pewman.%20Necesito%20ayuda%20con%3A%20" target="_blank" rel="noopener" aria-label="Pedir ayuda por WhatsApp" title="¿Te quedaste pegado? Escríbenos por WhatsApp">
+  <div class="fab-fila">
+  <a id="comodin" href="https://wa.me/56926007409?text=Hola%20Crist%C3%B3bal%2C%20te%20escribo%20desde%20el%20manual%20de%20la%20web%20de%20Pewman.%20Necesito%20ayuda%20con%3A%20" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" title="Comodín: llamada a un amigo. Úsalo solo si de verdad te quedaste pegado."><span class="c-t">Comodín</span><span class="c-s">llamada a un amigo</span></a>
+  <a id="fab-wsp" class="fab-c" href="https://wa.me/56926007409?text=Hola%20Crist%C3%B3bal%2C%20te%20escribo%20desde%20el%20manual%20de%20la%20web%20de%20Pewman.%20Necesito%20ayuda%20con%3A%20" target="_blank" rel="noopener" aria-label="Comodín: pedir ayuda por WhatsApp, solo para emergencias" title="Comodín: llamada a un amigo. Úsalo solo si de verdad te quedaste pegado.">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.8h-.02c-1.75 0-3.47-.47-4.97-1.36l-.36-.21-3.7.97.99-3.61-.23-.37a9.79 9.79 0 0 1-1.5-5.23c0-5.42 4.42-9.83 9.85-9.83a9.78 9.78 0 0 1 6.96 2.89 9.75 9.75 0 0 1 2.88 6.95c0 5.42-4.42 9.83-9.85 9.83M20.5 3.49A11.8 11.8 0 0 0 12.05.01C5.5.01.18 5.33.18 11.86c0 2.09.55 4.13 1.59 5.93L.08 24l6.35-1.66a11.9 11.9 0 0 0 5.62 1.43h.01c6.54 0 11.86-5.32 11.87-11.86a11.8 11.8 0 0 0-3.47-8.42"/></svg>
   </a>
-  <button id="fab-arriba" aria-label="Volver al índice" title="Volver al índice">
+  </div>
+  <button id="fab-arriba" class="fab-c" aria-label="Volver al índice" title="Volver al índice">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
   </button>
-  <button id="fab-buscar" aria-label="Buscar en el manual" title="Buscar en el manual (⌘K o /)">
+  <button id="fab-buscar" class="fab-c" aria-label="Buscar en el manual" title="Buscar en el manual (⌘K o /)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
   </button>
 </div>
