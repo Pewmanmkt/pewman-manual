@@ -132,11 +132,7 @@ figure.shot img[src$="08-articulo-editor.jpg"]{aspect-ratio:2000/928}
 figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-align:center}
 @media print{figure.shot{page-break-inside:avoid}}
 /* ---------- buscador flotante ---------- */
-#fab-buscar{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;
-  background:var(--rojo);color:#fff;border:none;cursor:pointer;box-shadow:0 10px 26px -8px rgba(189,0,40,.55);
-  display:flex;align-items:center;justify-content:center;z-index:60;transition:.15s}
-#fab-buscar:hover{transform:scale(1.07)}
-#fab-buscar svg{width:24px;height:24px}
+#fab-buscar{background:var(--rojo);color:#fff;box-shadow:0 10px 26px -8px rgba(189,0,40,.55)}
 #velo{position:fixed;inset:0;background:rgba(20,20,20,.55);backdrop-filter:blur(2px);z-index:70;
   display:none;align-items:flex-start;justify-content:center;padding:9vh 16px 16px}
 #velo.on{display:flex}
@@ -146,16 +142,40 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 .panel-b header svg{width:19px;height:19px;color:var(--gris-cl);flex:0 0 auto}
 #q2{flex:1;border:none;outline:none;font-size:17.5px;background:none;color:var(--tinta)}
 .panel-b header kbd{color:var(--gris-cl)}
-#res-b{overflow-y:auto;padding:8px}
-#res-b .r{display:block;padding:11px 14px;border-radius:10px;text-decoration:none;color:var(--tinta);cursor:pointer}
-#res-b .r:hover,#res-b .r.sel{background:var(--crema)}
-#res-b .r .cap-r{font-size:12px;color:var(--rojo);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
-#res-b .r .tit-r{font-weight:600;font-size:15.5px;margin:1px 0 2px}
-#res-b .r .frag{font-size:13.5px;color:var(--gris);line-height:1.5}
-#res-b mark{background:#ffe28a;border-radius:3px;padding:0 2px}
-#res-b .vacio{padding:26px 14px;text-align:center;color:var(--gris-cl);font-size:14.5px}
-@media print{#fab-buscar,#velo{display:none!important}}
-@media (max-width:640px){#fab-buscar{right:14px;bottom:14px;width:52px;height:52px}}
+/* lista de resultados: la comparten el buscador flotante y el de la portada */
+.res{overflow-y:auto;padding:8px}
+.res .r{display:block;padding:11px 14px;border-radius:10px;text-decoration:none;color:var(--tinta);cursor:pointer}
+.res .r:hover,.res .r.sel{background:var(--crema)}
+.res .r .cap-r{font-size:12px;color:var(--rojo);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.res .r .tit-r{font-weight:600;font-size:15.5px;margin:1px 0 2px}
+.res .r .frag{font-size:13.5px;color:var(--gris);line-height:1.5}
+.res mark{background:#ffe28a;border-radius:3px;padding:0 2px}
+.res .vacio{padding:26px 14px;text-align:center;color:var(--gris-cl);font-size:14.5px}
+/* resultados del buscador de portada: caen como panel bajo el campo */
+#res-top{display:none;position:absolute;left:18px;right:18px;top:calc(100% + 8px);background:#fff;
+  border:1px solid var(--linea);border-radius:14px;box-shadow:0 24px 50px -18px rgba(0,0,0,.3);
+  max-height:min(60vh,440px);z-index:20}
+#res-top.on{display:block}
+/* columna de botones flotantes: wsp arriba, volver al índice al medio, buscar abajo.
+   Es flex, así que si el de volver está oculto la columna se cierra sola sin dejar hueco. */
+#fabs{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;flex-direction:column;gap:12px}
+#fabs button,#fabs a{width:58px;height:58px;border-radius:50%;cursor:pointer;border:none;
+  display:flex;align-items:center;justify-content:center;transition:.15s;text-decoration:none}
+#fabs button:hover,#fabs a:hover{transform:scale(1.07)}
+#fabs svg{width:24px;height:24px}
+#fab-arriba{background:#fff;color:var(--tinta);border:1px solid var(--linea)!important;
+  box-shadow:0 10px 26px -10px rgba(0,0,0,.32);display:none!important}
+#fab-arriba.on{display:flex!important}
+#fab-arriba:hover{color:var(--rojo);border-color:var(--rojo)!important}
+#fab-arriba svg{width:23px;height:23px}
+#fab-wsp{background:#25D366;color:#fff;box-shadow:0 10px 26px -8px rgba(37,211,102,.6)}
+#fab-wsp svg{width:29px;height:29px}
+@media print{#fabs,#velo,#res-top{display:none!important}}
+@media (max-width:640px){
+  #fabs{right:14px;bottom:14px;gap:10px}
+  #fabs button,#fabs a{width:52px;height:52px}
+  #fab-wsp svg{width:26px;height:26px}
+}
 @media print{
   body{background:#fff}
   .buscador,.arriba{display:none}
@@ -174,7 +194,8 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
 </div>
 
 <div class="buscador">
-  <input id="q" type="search" placeholder="Busca una tarea: equipo, logo, blog, precio, sección...">
+  <input id="q" type="search" placeholder="Busca una tarea: equipo, logo, blog, precio, sección..." autocomplete="off">
+  <div id="res-top" class="res"></div>
 </div>
 
 <nav class="indice" id="indice">
@@ -1107,24 +1128,18 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
   Instrucciones verificadas una por una contra el panel real de esta tienda y contra la documentación oficial de Shopify. Si Shopify cambia su interfaz, el buscador del panel (<b>⌘ K</b>) siempre encuentra las opciones por nombre.
 </footer>
 
-<script>
-(function(){
-  var q = document.getElementById('q');
-  if(!q) return;
-  var caps = Array.prototype.slice.call(document.querySelectorAll('section.cap'));
-  q.addEventListener('input', function(){
-    var t = q.value.trim().toLowerCase();
-    caps.forEach(function(c){
-      if(!t){ c.style.display=''; return; }
-      c.style.display = c.textContent.toLowerCase().indexOf(t) !== -1 ? '' : 'none';
-    });
-  });
-})();
-</script>
 
-<button id="fab-buscar" aria-label="Buscar en el manual" title="Buscar en el manual (⌘K o /)">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
-</button>
+<div id="fabs">
+  <a id="fab-wsp" href="https://wa.me/56926007409?text=Hola%20Crist%C3%B3bal%2C%20necesito%20ayuda%20con%20la%20web%20de%20Pewman%20con%3A%20" target="_blank" rel="noopener" aria-label="Pedir ayuda por WhatsApp" title="¿Te quedaste pegado? Escríbenos por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.8h-.02c-1.75 0-3.47-.47-4.97-1.36l-.36-.21-3.7.97.99-3.61-.23-.37a9.79 9.79 0 0 1-1.5-5.23c0-5.42 4.42-9.83 9.85-9.83a9.78 9.78 0 0 1 6.96 2.89 9.75 9.75 0 0 1 2.88 6.95c0 5.42-4.42 9.83-9.85 9.83M20.5 3.49A11.8 11.8 0 0 0 12.05.01C5.5.01.18 5.33.18 11.86c0 2.09.55 4.13 1.59 5.93L.08 24l6.35-1.66a11.9 11.9 0 0 0 5.62 1.43h.01c6.54 0 11.86-5.32 11.87-11.86a11.8 11.8 0 0 0-3.47-8.42"/></svg>
+  </a>
+  <button id="fab-arriba" aria-label="Volver al índice" title="Volver al índice">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+  </button>
+  <button id="fab-buscar" aria-label="Buscar en el manual" title="Buscar en el manual (⌘K o /)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+  </button>
+</div>
 <div id="velo" role="dialog" aria-modal="true" aria-label="Buscador del manual">
   <div class="panel-b">
     <header>
@@ -1132,23 +1147,26 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
       <input id="q2" type="search" placeholder="Busca en todo el manual: persona, logo, precio, fecha..." autocomplete="off">
       <kbd>esc</kbd>
     </header>
-    <div id="res-b"><div class="vacio">Escribe para buscar en los 19 capítulos.</div></div>
+    <div id="res-b" class="res"><div class="vacio">Escribe para buscar en los 19 capítulos.</div></div>
   </div>
 </div>
 <script>
 (function(){
   var velo=document.getElementById('velo'), q2=document.getElementById('q2'),
-      res=document.getElementById('res-b'), fab=document.getElementById('fab-buscar');
+      resB=document.getElementById('res-b'), fab=document.getElementById('fab-buscar'),
+      q=document.getElementById('q'), resTop=document.getElementById('res-top'),
+      arriba=document.getElementById('fab-arriba'), indice=document.getElementById('indice');
+
   // Índice: cada h3 (o h2 si el capítulo no tiene h3) con el texto que le sigue.
   var idx=[];
   document.querySelectorAll('section.cap').forEach(function(cap){
     var capTit=(cap.querySelector('h2')||{}).textContent||'';
     var bloques=cap.querySelectorAll('h3');
     if(!bloques.length){
-      idx.push({el:cap, cap:capTit, tit:capTit, txt:cap.textContent});
+      idx.push({el:cap, cap:capTit, tit:capTit, txt:plano(cap)});
       return;
     }
-    // texto entre el inicio del capítulo y el primer h3 cuelga del h2
+    // el texto entre el inicio del capítulo y el primer h3 cuelga del h2
     idx.push({el:cap, cap:capTit, tit:capTit, txt:textoHasta(cap.querySelector('h2'), bloques[0])});
     bloques.forEach(function(h3,i){
       idx.push({el:h3, cap:capTit, tit:h3.textContent, txt:h3.textContent+' '+textoHasta(h3, bloques[i+1])});
@@ -1156,75 +1174,106 @@ figure.shot figcaption{font-size:13.5px;color:var(--gris);margin-top:8px;text-al
   });
   function textoHasta(desde, hasta){
     var t='', n=desde.nextElementSibling;
-    while(n && n!==hasta){ t+=' '+n.textContent; n=n.nextElementSibling; }
+    while(n && n!==hasta){ t+=' '+plano(n); n=n.nextElementSibling; }
     return t;
   }
+  // innerText, no textContent: es el navegador el que sabe dónde hay un corte
+  // visual, así que las celdas de tabla y los títulos de los recuadros no salen
+  // pegados al texto que sigue ("secciónCap. 4", "favoritosVas a entrar").
+  function plano(n){ return n.innerText || n.textContent; }
   function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
-  function abrir(){velo.classList.add('on'); q2.value=''; pintar([]); setTimeout(function(){q2.focus();},30);}
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+
+  // Devuelve null si aún no hay suficientes letras; si no, la lista de coincidencias.
+  function buscar(t){
+    t=t.trim();
+    if(t.length<2) return null;
+    var nt=norm(t), out=[];
+    idx.forEach(function(it){
+      var crudo=it.txt.replace(/\s+/g,' ').trim();
+      var p=norm(crudo).indexOf(nt);
+      if(p===-1) return;
+      var ini=Math.max(0,p-55);
+      out.push({
+        it:it,
+        frag:(ini>0?'…':'')+crudo.slice(ini,p+nt.length+90)+'…',
+        enTitulo:norm(it.tit).indexOf(nt)>-1
+      });
+    });
+    out.sort(function(a,b){return (b.enTitulo?1:0)-(a.enTitulo?1:0);});
+    return out.slice(0,30);
+  }
+
+  // Un mismo motor para los dos buscadores: el de la portada y el flotante.
+  function Vista(input, caja, pista){
+    var v={sel:-1, vivos:[]};
+    v.pintar=function(out, t){
+      v.vivos=out||[]; v.sel=-1;
+      if(!out){ caja.innerHTML='<div class="vacio">'+pista+'</div>'; return; }
+      if(!out.length){
+        caja.innerHTML='<div class="vacio">Sin resultados para «'+esc(input.value.trim())+'». Prueba con otra palabra.</div>';
+        return;
+      }
+      var re=new RegExp('('+esc(t).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');
+      caja.innerHTML=out.map(function(o,i){
+        return '<a class="r" data-i="'+i+'"><div class="cap-r">'+esc(o.it.cap)+'</div>'+
+          '<div class="tit-r">'+esc(o.it.tit)+'</div>'+
+          '<div class="frag">'+esc(o.frag).replace(re,'<mark>$1</mark>')+'</div></a>';
+      }).join('');
+      caja.querySelectorAll('.r').forEach(function(a){
+        a.addEventListener('click', function(){ ir(v.vivos[+a.dataset.i]); });
+      });
+    };
+    v.mover=function(d){
+      var items=caja.querySelectorAll('.r'); if(!items.length) return;
+      v.sel=(v.sel+d+items.length)%items.length;
+      items.forEach(function(x,i){x.classList.toggle('sel',i===v.sel); if(i===v.sel)x.scrollIntoView({block:'nearest'});});
+    };
+    input.addEventListener('input', function(){
+      var t=input.value.trim();
+      v.pintar(buscar(t), t);
+      if(caja===resTop) caja.classList.toggle('on', t.length>0);
+    });
+    input.addEventListener('keydown', function(e){
+      if(e.key==='ArrowDown'){e.preventDefault(); v.mover(1);}
+      if(e.key==='ArrowUp'){e.preventDefault(); v.mover(-1);}
+      if(e.key==='Enter'&&v.vivos[v.sel]){e.preventDefault(); ir(v.vivos[v.sel]);}
+    });
+    return v;
+  }
+
+  var vFlotante=Vista(q2, resB, 'Escribe para buscar en los 19 capítulos.');
+  Vista(q, resTop, 'Escribe al menos 2 letras.');
+
+  function ir(o){
+    if(!o) return;
+    cerrar();
+    resTop.classList.remove('on');
+    // 'instant' explícito: no depende del scroll-behavior del CSS ni de que las
+    // fotos de arriba ya hayan cargado (su alto está reservado con aspect-ratio).
+    o.it.el.scrollIntoView({block:'start', behavior:'instant'});
+  }
+
+  function abrir(){velo.classList.add('on'); q2.value=''; vFlotante.pintar(null); setTimeout(function(){q2.focus();},30);}
   function cerrar(){velo.classList.remove('on');}
   fab.addEventListener('click', abrir);
   velo.addEventListener('click', function(e){ if(e.target===velo) cerrar(); });
   document.addEventListener('keydown', function(e){
-    if(e.key==='Escape') cerrar();
+    if(e.key==='Escape'){ cerrar(); resTop.classList.remove('on'); }
     if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault(); abrir();}
     if(e.key==='/'&&!velo.classList.contains('on')&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault(); abrir();}
   });
-  var sel=-1, vivos=[];
-  q2.addEventListener('input', function(){ buscar(q2.value); });
-  q2.addEventListener('keydown', function(e){
-    if(e.key==='ArrowDown'){e.preventDefault(); mover(1);}
-    if(e.key==='ArrowUp'){e.preventDefault(); mover(-1);}
-    if(e.key==='Enter'&&vivos[sel]){e.preventDefault(); ir(vivos[sel]);}
+  // el panel de la portada se cierra al hacer clic fuera y vuelve si hay texto
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.buscador')) resTop.classList.remove('on');
   });
-  function mover(d){
-    var items=res.querySelectorAll('.r'); if(!items.length) return;
-    sel=(sel+d+items.length)%items.length;
-    items.forEach(function(x,i){x.classList.toggle('sel',i===sel); if(i===sel)x.scrollIntoView({block:'nearest'});});
-  }
-  function buscar(t){
-    t=t.trim(); sel=-1;
-    if(t.length<2){ pintar([]); return; }
-    var nt=norm(t), out=[];
-    idx.forEach(function(it){
-      var pos=norm(it.txt).indexOf(nt);
-      if(pos===-1) return;
-      var crudo=it.txt.replace(/\s+/g,' ').trim();
-      var p2=norm(crudo).indexOf(nt);
-      var ini=Math.max(0,p2-55);
-      var frag=(ini>0?'…':'')+crudo.slice(ini,p2+nt.length+90)+'…';
-      out.push({it:it, frag:frag, enTitulo:norm(it.tit).indexOf(nt)>-1});
-    });
-    out.sort(function(a,b){return (b.enTitulo?1:0)-(a.enTitulo?1:0);});
-    pintar(out.slice(0,30), t);
-  }
-  function esc(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
-  function pintar(out, t){
-    vivos=out;
-    if(!out.length){
-      res.innerHTML='<div class="vacio">'+(q2.value.trim().length<2?'Escribe para buscar en los 19 capítulos.':'Sin resultados para «'+esc(q2.value)+'». Prueba con otra palabra.')+'</div>';
-      return;
-    }
-    var re=new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');
-    res.innerHTML=out.map(function(o,i){
-      return '<a class="r" data-i="'+i+'"><div class="cap-r">'+esc(o.it.cap)+'</div>'+
-        '<div class="tit-r">'+esc(o.it.tit)+'</div>'+
-        '<div class="frag">'+esc(o.frag).replace(re,'<mark>$1</mark>')+'</div></a>';
-    }).join('');
-    res.querySelectorAll('.r').forEach(function(a){
-      a.addEventListener('click', function(){ ir(out[+a.dataset.i]); });
-    });
-  }
-  function ir(o){
-    cerrar();
-    // por si el filtro de portada dejó capítulos escondidos
-    document.querySelectorAll('section.cap').forEach(function(c){c.style.display='';});
-    var qTop=document.getElementById('q'); if(qTop) qTop.value='';
-    // usamos el mismo camino que un enlace normal: es el unico que el navegador
-    // reajusta solo si el contenido de arriba todavia esta cargando.
-    // 'instant' explicito: no depende del scroll-behavior del CSS ni de que
-    // las fotos de arriba ya hayan cargado (su alto esta reservado con aspect-ratio).
-    o.it.el.scrollIntoView({block:'start', behavior:'instant'});
-  }
+  q.addEventListener('focus', function(){ if(q.value.trim()) resTop.classList.add('on'); });
+
+  // Botón de volver al índice: aparece recién cuando ya bajaste.
+  arriba.addEventListener('click', function(){ indice.scrollIntoView({block:'start', behavior:'instant'}); });
+  function verArriba(){ arriba.classList.toggle('on', window.scrollY>500); }
+  window.addEventListener('scroll', verArriba, {passive:true});
+  verArriba();
 })();
 </script>
 
